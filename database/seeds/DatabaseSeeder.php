@@ -30,7 +30,10 @@ class DatabaseSeeder extends Seeder
         MataUang::insert($mata_uangs);
 
         $gudangs = [
-            ["kode" => "PWD", "keterangan" => "PWD", "omzet" => NULL, "jual" => NULL, "kodesc" => NULL],
+            ["kode" => "A", "keterangan" => "Gudang A", "omzet" => NULL, "jual" => NULL, "kodesc" => NULL],
+            ["kode" => "B", "keterangan" => "Gudang B", "omzet" => NULL, "jual" => NULL, "kodesc" => NULL],
+            ["kode" => "C", "keterangan" => "Gudang C", "omzet" => NULL, "jual" => NULL, "kodesc" => NULL],
+            ["kode" => "D", "keterangan" => "Gudang D", "omzet" => NULL, "jual" => NULL, "kodesc" => NULL],
         ];
         Gudang::insert($gudangs);
     }

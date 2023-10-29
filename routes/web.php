@@ -1,8 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PotController;
+use App\Http\Controllers\RekbiController;
+use App\Http\Controllers\UsahaController;
 use App\Http\Controllers\GudangController;
+use App\Http\Controllers\SatuanController;
+use App\Http\Controllers\TerminController;
+use App\Http\Controllers\KasBankController;
+use App\Http\Controllers\WilayahController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\GolonganController;
 use App\Http\Controllers\MataUangController;
+use App\Http\Controllers\SalesmanController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SubGolonganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +31,24 @@ Route::get('/', function () {
     return view('welcome');
 })->name("home");
 
-
 Route::get('login', function () {
     return view('auth.login');
 })->name("login");
 
 // Master
 Route::resources([
-    "mata_uang" => "MataUangController",
-    "gudang"    => "GudangController",
+    "mata_uang"     => "MataUangController",
+    "gudang"        => "GudangController",
+    "pot"           => "PotController",
+    "golongan"      => "GolonganController",
+    "sub_golongan"  => "SubGolonganController",
+    "satuan"        => "SatuanController",
+    "salesman"      => "SalesmanController",
+    "termin"        => "TerminController",
+    "wilayah"       => "WilayahController",
+    "usaha"         => "UsahaController",
+    "supplier"      => "SupplierController",
+    "customer"      => "CustomerController",
+    "kas_bank"      => "KasBankController",
+    "rekbi"         => "RekbiController",
 ]);

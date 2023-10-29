@@ -14,7 +14,7 @@
             <!--begin::Nav-->
             <ul class="nav flex-column">
 
-                <!--begin::Nav item-->
+                {{-- <!--begin::Nav item-->
                 <li class="nav-item mb-2" title="Dashboard">
                     <!--begin::Nav link-->
                     <a class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light" href="{{ route("home") }}">
@@ -31,7 +31,7 @@
                     </a>
                     <!--end::Nav link-->
                 </li>
-                <!--end::Nav item-->
+                <!--end::Nav item--> --}}
 
                 <!--begin::Nav item transaksi-->
                 <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="right" data-bs-dismiss="click" title="{{ ucfirst("master") }}">
@@ -50,7 +50,7 @@
                 </li>
                 <!--end::Nav item transaksi-->
 
-                <!--begin::Nav item Master-->
+                {{-- <!--begin::Nav item Master-->
                 <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="right" data-bs-dismiss="click" title="{{ ucfirst("transaksi") }}">
                     <!--begin::Nav link-->
                     <a class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light" data-bs-toggle="tab" href="#transaksi">
@@ -65,7 +65,7 @@
                     </a>
                     <!--end::Nav link-->
                 </li>
-                <!--end::Nav item Master-->
+                <!--end::Nav item Master--> --}}
 
             </ul>
             <!--end::Tabs-->

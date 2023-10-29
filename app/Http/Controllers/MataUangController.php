@@ -25,7 +25,7 @@ class MataUangController extends Controller
      */
     public function create()
     {
-        //
+        return view("mata_uang.create");
     }
 
     /**
@@ -36,7 +36,8 @@ class MataUangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        MataUang::create($request->all());
+        return redirect()->route("mata_uang.index")->with("success", "Data berhasil disimpan");
     }
 
     /**
@@ -56,9 +57,10 @@ class MataUangController extends Controller
      * @param  \App\MataUang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit(MataUang $mataUang)
+    public function edit($id)
     {
-        //
+        $mata_uang = MataUang::whereId($id)->get()->last();
+        return view("mata_uang.edit", compact("mata_uang"));
     }
 
     /**
@@ -68,9 +70,10 @@ class MataUangController extends Controller
      * @param  \App\MataUang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MataUang $mataUang)
+    public function update(Request $request, $id)
     {
-        //
+        MataUang::whereId($id)->update($request->except(["_token", "_method"]));
+        return redirect()->route("mata_uang.index")->with("success", "Data berhasil diupdate");
     }
 
     /**
@@ -79,8 +82,9 @@ class MataUangController extends Controller
      * @param  \App\MataUang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MataUang $mataUang)
+    public function destroy($id)
     {
-        //
+        MataUang::whereId($id)->delete();
+        return redirect()->route("mata_uang.index")->with("success", "Data berhasil dihapus");
     }
 }

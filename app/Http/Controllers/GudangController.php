@@ -15,7 +15,7 @@ class GudangController extends Controller
     public function index()
     {
         $gudangs = Gudang::all();
-        return $gudangs;
+        return view("gudang.index", compact("gudangs"));
     }
 
     /**
@@ -25,7 +25,7 @@ class GudangController extends Controller
      */
     public function create()
     {
-        //
+        return view("gudang.create");
     }
 
     /**
@@ -36,16 +36,17 @@ class GudangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Gudang::create($request->all());
+        return redirect()->route("gudang.index")->with("success", "Data berhasil disimpan");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Gudang  $gudang
+     * @param  \App\Gudang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function show(Gudang $gudang)
+    public function show(Gudang $mataUang)
     {
         //
     }
@@ -53,34 +54,37 @@ class GudangController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Gudang  $gudang
+     * @param  \App\Gudang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gudang $gudang)
+    public function edit($id)
     {
-        //
+        $gudang = Gudang::whereId($id)->get()->last();
+        return view("gudang.edit", compact("gudang"));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Gudang  $gudang
+     * @param  \App\Gudang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gudang $gudang)
+    public function update(Request $request, $id)
     {
-        //
+        Gudang::whereId($id)->update($request->except(["_token", "_method"]));
+        return redirect()->route("gudang.index")->with("success", "Data berhasil diupdate");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Gudang  $gudang
+     * @param  \App\Gudang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gudang $gudang)
+    public function destroy($id)
     {
-        //
+        Gudang::whereId($id)->delete();
+        return redirect()->route("gudang.index")->with("success", "Data berhasil dihapus");
     }
 }
