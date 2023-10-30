@@ -46,6 +46,7 @@ Route::resources([
     "golongan"                  => "GolonganController",
     "sub_golongan"              => "SubGolonganController",
     "satuan"                    => "SatuanController",
+    "stock"                     => "StockController",
     "salesman"                  => "SalesmanController",
     "termin"                    => "TerminController",
     "wilayah"                   => "WilayahController",

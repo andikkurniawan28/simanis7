@@ -5,21 +5,21 @@
 @endsection
 
 @section("form-create")
-    <form action="{{ route("pot.update", $pot->id) }}" method="POST">
+    <form action="{{ route("pot.update", $pot->kode) }}" method="POST">
         @csrf @method("PUT")
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("keterangan") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="{{ $pot->keterangan }}" required/>
-        </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                 <span class="required">{{ ucwords("kode") }}</span>
             </label>
             <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="{{ $pot->kode }}" required/>
+        </div>
+
+        <div class="d-flex flex-column mb-7 fv-row">
+            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                <span class="">{{ ucwords("keterangan") }}</span>
+            </label>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="{{ $pot->keterangan }}" />
         </div>
 
         <div class="text-center pt-0">

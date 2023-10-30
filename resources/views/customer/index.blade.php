@@ -9,7 +9,7 @@
 @endsection
 
 @section("table")
-    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+    <table class="table table-hover text-center" id="example">
         <thead>
             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0 text-center">
                 <th>{{ ucfirst("keterangan") }}</th>
@@ -45,7 +45,7 @@
                 <th>{{ ucfirst("tindakan") }}</th>
             </tr>
         </thead>
-        <tbody class="fw-bold text-gray-600">
+        <tbody>
         @foreach ($customers as $customer)
             <tr class="text-center">
                 <td>{{ $customer->keterangan }}</td>

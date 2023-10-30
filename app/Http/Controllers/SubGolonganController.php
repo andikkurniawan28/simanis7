@@ -14,7 +14,7 @@ class SubGolonganController extends Controller
      */
     public function index()
     {
-        $sub_golongans = SubGolongan::all();
+        $sub_golongans = SubGolongan::orderBy("kode", "asc")->get();
         return view("sub_golongan.index", compact("sub_golongans"));
     }
 
@@ -57,9 +57,9 @@ class SubGolonganController extends Controller
      * @param  \App\SubGolongan  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $sub_golongan = SubGolongan::whereId($id)->get()->last();
+        $sub_golongan = SubGolongan::where("kode", $kode)->get()->last();
         return view("sub_golongan.edit", compact("sub_golongan"));
     }
 
@@ -70,9 +70,9 @@ class SubGolonganController extends Controller
      * @param  \App\SubGolongan  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        SubGolongan::whereId($id)->update($request->except(["_token", "_method"]));
+        SubGolongan::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("sub_golongan.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class SubGolonganController extends Controller
      * @param  \App\SubGolongan  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        SubGolongan::whereId($id)->delete();
+        SubGolongan::where("kode", $kode)->delete();
         return redirect()->route("sub_golongan.index")->with("success", "Data berhasil dihapus");
     }
 }

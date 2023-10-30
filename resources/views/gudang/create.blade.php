@@ -10,13 +10,6 @@
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("keterangan") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                 <span class="required">{{ ucwords("kode") }}</span>
             </label>
             <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="" required/>
@@ -24,23 +17,30 @@
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("omzet") }}</span>
+                <span class="">{{ ucwords("keterangan") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="omzet" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="" />
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("jual") }}</span>
+                <span class="">{{ ucwords("omzet") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="jual" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="omzet" value="" />
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("kodesc") }}</span>
+                <span class="">{{ ucwords("jual") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="kodesc" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="jual" value="" />
+        </div>
+
+        <div class="d-flex flex-column mb-7 fv-row">
+            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                <span class="">{{ ucwords("kodesc") }}</span>
+            </label>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="kodesc" value="" />
         </div>
 
         <div class="text-center pt-0">

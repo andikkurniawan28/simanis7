@@ -14,7 +14,7 @@ class SatuanController extends Controller
      */
     public function index()
     {
-        $satuans = Satuan::all();
+        $satuans = Satuan::orderBy("kode", "asc")->get();
         return view("satuan.index", compact("satuans"));
     }
 
@@ -57,9 +57,9 @@ class SatuanController extends Controller
      * @param  \App\Satuan  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $satuan = Satuan::whereId($id)->get()->last();
+        $satuan = Satuan::where("kode", $kode)->get()->last();
         return view("satuan.edit", compact("satuan"));
     }
 
@@ -70,9 +70,9 @@ class SatuanController extends Controller
      * @param  \App\Satuan  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        Satuan::whereId($id)->update($request->except(["_token", "_method"]));
+        Satuan::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("satuan.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class SatuanController extends Controller
      * @param  \App\Satuan  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        Satuan::whereId($id)->delete();
+        Satuan::where("kode", $kode)->delete();
         return redirect()->route("satuan.index")->with("success", "Data berhasil dihapus");
     }
 }

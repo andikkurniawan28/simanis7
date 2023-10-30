@@ -25,7 +25,7 @@
                         </span>
                     </div>
                     <a href="../../demo7/dist/index.html" class="d-flex align-items-center">
-                        <img alt="Logo" src="/metronic/dist/assets/media/logos/logo-demo7.svg" class="h-30px" />
+                        <img alt="Logo" src="/old/simanis.jpg" class="h-50px" />
                     </a>
                 </div>
             </div>

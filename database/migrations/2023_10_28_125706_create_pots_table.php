@@ -13,9 +13,8 @@ class CreatePotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pots', function (Blueprint $table) {
-            $table->id();
-            $table->string("kode")->unique();
+        Schema::create('pot', function (Blueprint $table) {
+            $table->string("kode")->unique()->index();
             $table->string("keterangan")->nullable();
         });
     }

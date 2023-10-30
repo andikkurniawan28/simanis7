@@ -14,7 +14,7 @@ class GudangController extends Controller
      */
     public function index()
     {
-        $gudangs = Gudang::orderBy("id", "asc")->get();
+        $gudangs = Gudang::orderBy("kode", "asc")->get();
         return view("gudang.index", compact("gudangs"));
     }
 
@@ -57,9 +57,9 @@ class GudangController extends Controller
      * @param  \App\Gudang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $gudang = Gudang::whereId($id)->get()->last();
+        $gudang = Gudang::where("kode", $kode)->get()->last();
         return view("gudang.edit", compact("gudang"));
     }
 
@@ -70,9 +70,9 @@ class GudangController extends Controller
      * @param  \App\Gudang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        Gudang::whereId($id)->update($request->except(["_token", "_method"]));
+        Gudang::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("gudang.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class GudangController extends Controller
      * @param  \App\Gudang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        Gudang::whereId($id)->delete();
+        Gudang::where("kode", $kode)->delete();
         return redirect()->route("gudang.index")->with("success", "Data berhasil dihapus");
     }
 }

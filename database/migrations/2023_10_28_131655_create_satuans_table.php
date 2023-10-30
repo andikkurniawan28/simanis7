@@ -13,8 +13,7 @@ class CreateSatuansTable extends Migration
      */
     public function up()
     {
-        Schema::create('satuans', function (Blueprint $table) {
-            $table->id();
+        Schema::create('satuan', function (Blueprint $table) {
             $table->string("kode")->unique();
             $table->string("keterangan")->nullable();
         });

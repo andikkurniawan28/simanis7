@@ -14,7 +14,7 @@ class PotController extends Controller
      */
     public function index()
     {
-        $pots = Pot::orderBy("id", "asc")->get();
+        $pots = Pot::orderBy("kode", "asc")->get();
         return view("pot.index", compact("pots"));
     }
 
@@ -57,9 +57,9 @@ class PotController extends Controller
      * @param  \App\Pot  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $pot = Pot::whereId($id)->get()->last();
+        $pot = Pot::where("kode", $kode)->get()->last();
         return view("pot.edit", compact("pot"));
     }
 
@@ -70,9 +70,9 @@ class PotController extends Controller
      * @param  \App\Pot  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        Pot::whereId($id)->update($request->except(["_token", "_method"]));
+        Pot::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("pot.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class PotController extends Controller
      * @param  \App\Pot  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        Pot::whereId($id)->delete();
+        Pot::where("kode", $kode)->delete();
         return redirect()->route("pot.index")->with("success", "Data berhasil dihapus");
     }
 }

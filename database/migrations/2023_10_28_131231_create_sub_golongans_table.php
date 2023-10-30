@@ -13,8 +13,7 @@ class CreateSubGolongansTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_golongans', function (Blueprint $table) {
-            $table->id();
+        Schema::create('subgol', function (Blueprint $table) {
             $table->string("kode")->unique();
             $table->string("keterangan")->nullable();
         });

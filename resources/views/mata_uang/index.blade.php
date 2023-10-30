@@ -9,9 +9,10 @@
 @endsection
 
 @section("table")
-    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+    <table class="table table-hover text-center" id="example">
         <thead>
-            <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0 text-center">
+            <tr>
+                <th>{{ ucwords("no") }}</th>
                 <th>{{ ucwords("tanggal") }}</th>
                 <th>{{ ucwords("kode") }}</th>
                 <th>{{ ucwords("kurs") }}</th>
@@ -19,10 +20,11 @@
                 <th>{{ ucwords("tindakan") }}</th>
             </tr>
         </thead>
-        <tbody class="fw-bold text-gray-600">
+        <tbody>
         @foreach ($mata_uangs as $mata_uang)
-            <tr class="text-center">
-                <td>{{ $mata_uang->tanggal }}</td>
+            <tr>
+                <td>{{ $mata_uang->id }}</td>
+                <td>{{ date("d-m-Y", strtotime($mata_uang->tgl)) }}</td>
                 <td>{{ $mata_uang->kode }}</td>
                 <td>{{ $mata_uang->kurs }}</td>
                 <td>{{ $mata_uang->keterangan }}</td>
@@ -39,12 +41,12 @@
                             <a href="{{ route("mata_uang.edit", $mata_uang->id) }}" class="menu-link px-3">{{ ucwords("edit") }}</a>
                         </div>
                         <div class="menu-item px-3">
-                            <form action="{{ route("mata_uang.destroy", $mata_uang->id) }}" method="POST" id="form-delete">
+                            <form action="{{ route("mata_uang.destroy", $mata_uang->id) }}" method="POST" id="form-delete{{ $mata_uang->id }}">
                                 @csrf @method("DELETE")
-                                <a class="menu-link px-3" onclick="submitForm()">{{ ucwords("hapus") }}</a>
+                                <a class="menu-link px-3" onclick="submitForm{{ $mata_uang->id }}()">{{ ucwords("hapus") }}</a>
                                 <script>
-                                    function submitForm() {
-                                        document.getElementById("form-delete").submit();
+                                    function submitForm{{ $mata_uang->id }}() {
+                                        document.getElementById("form-delete{{ $mata_uang->id }}").submit();
                                     }
                                 </script>
                             </form>

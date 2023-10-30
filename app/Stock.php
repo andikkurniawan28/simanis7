@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Salesman extends Model
+class Stock extends Model
 {
-    protected $table = "salesman";
+    protected $table = "stock";
     protected $primaryKey = "kode";
     protected $guarded = [];
     public $timestamps = false;

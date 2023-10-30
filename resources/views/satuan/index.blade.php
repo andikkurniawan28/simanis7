@@ -9,19 +9,19 @@
 @endsection
 
 @section("table")
-    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+    <table class="table table-hover text-center" id="example">
         <thead>
-            <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0 text-center">
+            <tr>
                 <th>{{ ucwords("no") }}</th>
                 <th>{{ ucwords("kode") }}</th>
                 <th>{{ ucwords("keterangan") }}</th>
                 <th>{{ ucwords("tindakan") }}</th>
             </tr>
         </thead>
-        <tbody class="fw-bold text-gray-600">
+        <tbody>
         @foreach ($satuans as $satuan)
             <tr class="text-center">
-                <td>{{ $satuan->id }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $satuan->kode }}</td>
                 <td>{{ $satuan->keterangan }}</td>
                 <td>
@@ -34,15 +34,15 @@
                     </a>
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                         <div class="menu-item px-3">
-                            <a href="{{ route("satuan.edit", $satuan->id) }}" class="menu-link px-3">{{ ucwords("edit") }}</a>
+                            <a href="{{ route("satuan.edit", $satuan->kode) }}" class="menu-link px-3">{{ ucwords("edit") }}</a>
                         </div>
                         <div class="menu-item px-3">
-                            <form action="{{ route("satuan.destroy", $satuan->id) }}" method="POST" id="form-delete">
+                            <form action="{{ route("satuan.destroy", $satuan->kode) }}" method="POST" id="form-delete{{ $satuan->kode }}">
                                 @csrf @method("DELETE")
-                                <a class="menu-link px-3" onclick="submitForm()">{{ ucwords("hapus") }}</a>
+                                <a class="menu-link px-3" onclick="submitForm{{ $satuan->kode }}()">{{ ucwords("hapus") }}</a>
                                 <script>
-                                    function submitForm() {
-                                        document.getElementById("form-delete").submit();
+                                    function submitForm{{ $satuan->kode }}() {
+                                        document.getElementById("form-delete{{ $satuan->kode }}").submit();
                                     }
                                 </script>
                             </form>

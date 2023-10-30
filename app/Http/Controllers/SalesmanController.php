@@ -14,7 +14,7 @@ class SalesmanController extends Controller
      */
     public function index()
     {
-        $salesmans = Salesman::all();
+        $salesmans = Salesman::orderBy("kode", "asc")->get();
         return view("salesman.index", compact("salesmans"));
     }
 
@@ -57,9 +57,9 @@ class SalesmanController extends Controller
      * @param  \App\Salesman  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $salesman = Salesman::whereId($id)->get()->last();
+        $salesman = Salesman::where("kode", $kode)->get()->last();
         return view("salesman.edit", compact("salesman"));
     }
 
@@ -70,9 +70,9 @@ class SalesmanController extends Controller
      * @param  \App\Salesman  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        Salesman::whereId($id)->update($request->except(["_token", "_method"]));
+        Salesman::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("salesman.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class SalesmanController extends Controller
      * @param  \App\Salesman  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        Salesman::whereId($id)->delete();
+        Salesman::where("kode", $kode)->delete();
         return redirect()->route("salesman.index")->with("success", "Data berhasil dihapus");
     }
 }

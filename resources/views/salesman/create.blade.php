@@ -10,13 +10,6 @@
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("keterangan") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                 <span class="required">{{ ucwords("kode") }}</span>
             </label>
             <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="" required/>
@@ -24,44 +17,51 @@
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("nama") }}</span>
+                <span class="">{{ ucwords("nama") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="nama" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="nama" value="" />
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("alamat") }}</span>
+                <span class="">{{ ucwords("alamat") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="alamat" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="alamat" value="" />
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("telepon") }}</span>
+                <span class="">{{ ucwords("telepon") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="telepon" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="telepon" value="" />
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("kota") }}</span>
+                <span class="">{{ ucwords("kota") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="kota" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="kota" value="" />
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("khusus") }}</span>
+                <span class="">{{ ucwords("keterangan") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="khusus" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="" />
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ strtoupper("ktp") }}</span>
+                <span class="">{{ ucwords("khusus") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="ktp" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="khusus" value="" />
+        </div>
+
+        <div class="d-flex flex-column mb-7 fv-row">
+            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                <span class="">{{ strtoupper("ktp") }}</span>
+            </label>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="ktp" value="" />
         </div>
 
         <div class="text-center pt-0">

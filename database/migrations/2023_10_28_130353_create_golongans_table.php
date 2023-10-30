@@ -13,11 +13,10 @@ class CreateGolongansTable extends Migration
      */
     public function up()
     {
-        Schema::create('golongans', function (Blueprint $table) {
-            $table->id();
+        Schema::create('golongan', function (Blueprint $table) {
             $table->string("kode")->unique();
             $table->string("keterangan")->nullable();
-            $table->float("ppn");
+            $table->float("ppn")->nullable();
         });
     }
 

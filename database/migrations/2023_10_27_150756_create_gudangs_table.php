@@ -13,9 +13,8 @@ class CreateGudangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gudangs', function (Blueprint $table) {
-            $table->id();
-            $table->string("kode")->unique();
+        Schema::create('gudang', function (Blueprint $table) {
+            $table->string("kode")->unique()->index();
             $table->string("keterangan")->nullable();
             $table->string("omzet")->nullable();
             $table->string("jual")->nullable();

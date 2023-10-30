@@ -125,6 +125,17 @@
                                         </div>
                                     </div>
 
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="{{ route("stock.index") }}">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">{{ ucwords("stock") }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="menu-item">
@@ -303,7 +314,7 @@
                     <!--end::Tab pane master-->
 
 
-					{{-- <!--begin::Tab pane transaksi-->
+					<!--begin::Tab pane transaksi-->
                     <div class="tab-pane fade active show" id="transaksi" role="tabpanel">
 
                         <!--begin::Menu-->
@@ -314,60 +325,6 @@
                                     <div class="menu-content pb-2">
                                         <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ ucwords("transaksi") }}</span>
                                     </div>
-                                </div>
-
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo7/dist/index.html">
-                                        <span class="menu-icon">
-                                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-                                            <span class="svg-icon svg-icon-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-                                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-                                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-                                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </span>
-                                        <span class="menu-title">Mata Uang</span>
-                                    </a>
-                                </div>
-
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo7/dist/index.html">
-                                        <span class="menu-icon">
-                                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-                                            <span class="svg-icon svg-icon-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-                                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-                                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-                                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </span>
-                                        <span class="menu-title">{{ ucwords("gudang") }}</span>
-                                    </a>
-                                </div>
-
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo7/dist/index.html">
-                                        <span class="menu-icon">
-                                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-                                            <span class="svg-icon svg-icon-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-                                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-                                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-                                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </span>
-                                        <span class="menu-title">{{ ucwords("pot") }}</span>
-                                    </a>
                                 </div>
 
                                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -384,29 +341,93 @@
                                         <!--end::Svg Icon-->
                                     </span>
 
-                                    <span class="menu-title">{{ ucwords("stock") }}</span>
+                                    <span class="menu-title">{{ ucwords("pembelian") }}</span>
                                         <span class="menu-arrow"></span>
                                     </span>
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="../../demo7/dist/account/overview.html">
+                                            <a class="menu-link" href="">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucwords("golongan") }}</span>
+                                                <span class="menu-title">{{ ucwords(str_replace("_", " ", "order_pembelian")) }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">{{ ucwords(str_replace("_", " ", "pembelian")) }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">{{ ucwords(str_replace("_", " ", "retur_pembelian")) }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">{{ ucwords(str_replace("_", " ", "nota_tambah_kurang")) }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">{{ ucwords(str_replace("_", " ", "titipan")) }}</span>
                                             </a>
                                         </div>
                                     </div>
 
                                 </div>
 
+                                <div class="menu-item">
+                                    <a class="menu-link" href="">
+                                        <span class="menu-icon">
+                                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
+                                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
+                                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
+                                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-title">{{ ucwords(str_replace("_", " ", "pelunasan_hutang")) }}</span>
+                                    </a>
+                                </div>
+
+
+
                             </div>
                         </div>
                         <!--end::Menu-->
 
                     </div>
-                    <!--end::Tab pane transaksi--> --}}
+                    <!--end::Tab pane transaksi-->
 
 				</div>
 				<!--end::Tab content-->

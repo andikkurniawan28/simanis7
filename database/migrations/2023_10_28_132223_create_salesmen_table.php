@@ -13,10 +13,9 @@ class CreateSalesmenTable extends Migration
      */
     public function up()
     {
-        Schema::create('salesmen', function (Blueprint $table) {
-            $table->id();
+        Schema::create('salesman', function (Blueprint $table) {
             $table->string("kode")->unique();
-            $table->string("nama");
+            $table->string("nama")->nullable();
             $table->string("alamat")->nullable();
             $table->string("telepon")->nullable();
             $table->string("kota")->nullable();

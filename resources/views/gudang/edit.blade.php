@@ -5,15 +5,8 @@
 @endsection
 
 @section("form-create")
-    <form action="{{ route("gudang.update", $gudang->id) }}" method="POST">
+    <form action="{{ route("gudang.update", $gudang->kode) }}" method="POST">
         @csrf @method("PUT")
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("keterangan") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="{{ $gudang->keterangan }}" required/>
-        </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
@@ -24,23 +17,30 @@
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("omzet") }}</span>
+                <span class="">{{ ucwords("keterangan") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="omzet" value="{{ $gudang->omzet }}" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="{{ $gudang->keterangan }}" />
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("jual") }}</span>
+                <span class="">{{ ucwords("omzet") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="jual" value="{{ $gudang->jual }}" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="omzet" value="{{ $gudang->omzet }}" />
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("kodesc") }}</span>
+                <span class="">{{ ucwords("jual") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="kodesc" value="{{ $gudang->kodesc }}" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="jual" value="{{ $gudang->jual }}" />
+        </div>
+
+        <div class="d-flex flex-column mb-7 fv-row">
+            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                <span class="">{{ ucwords("kodesc") }}</span>
+            </label>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="kodesc" value="{{ $gudang->kodesc }}" />
         </div>
 
         <div class="text-center pt-0">

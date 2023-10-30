@@ -14,7 +14,7 @@ class GolonganController extends Controller
      */
     public function index()
     {
-        $golongans = Golongan::orderBy("id", "asc")->get();
+        $golongans = Golongan::orderBy("kode", "asc")->get();
         return view("golongan.index", compact("golongans"));
     }
 
@@ -57,9 +57,9 @@ class GolonganController extends Controller
      * @param  \App\Golongan  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $golongan = Golongan::whereId($id)->get()->last();
+        $golongan = Golongan::where("kode", $kode)->get()->last();
         return view("golongan.edit", compact("golongan"));
     }
 
@@ -70,9 +70,9 @@ class GolonganController extends Controller
      * @param  \App\Golongan  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        Golongan::whereId($id)->update($request->except(["_token", "_method"]));
+        Golongan::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("golongan.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class GolonganController extends Controller
      * @param  \App\Golongan  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        Golongan::whereId($id)->delete();
+        Golongan::where("kode", $kode)->delete();
         return redirect()->route("golongan.index")->with("success", "Data berhasil dihapus");
     }
 }

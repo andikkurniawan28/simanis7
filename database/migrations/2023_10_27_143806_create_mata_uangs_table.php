@@ -13,11 +13,11 @@ class CreateMataUangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mata_uangs', function (Blueprint $table) {
+        Schema::create('uang', function (Blueprint $table) {
             $table->id();
-            $table->date("tanggal");
-            $table->string("kode");
-            $table->float("kurs");
+            $table->date("tgl");
+            $table->string("kode")->nullable();
+            $table->float("kurs")->nullable();
             $table->string("keterangan")->nullable();
         });
     }

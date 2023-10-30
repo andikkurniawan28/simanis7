@@ -12,28 +12,28 @@
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                 <span class="required">{{ ucwords("tanggal") }}</span>
             </label>
-            <input type="date" class="form-control form-control-solid" placeholder="" name="tanggal" value="{{ date("Y-m-d") }}" required/>
+            <input type="date" class="form-control form-control-solid" placeholder="" name="tgl" value="{{ date("Y-m-d") }}" required/>
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("kode") }}</span>
+                <span class="">{{ ucwords("kode") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value=""/>
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("kurs") }}</span>
+                <span class="">{{ ucwords("kurs") }}</span>
             </label>
-            <input type="number" class="form-control form-control-solid" placeholder="" name="kurs" value="" step="any" required/>
+            <input type="number" class="form-control form-control-solid" placeholder="" name="kurs" value="" step="any"/>
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("keterangan") }}</span>
+                <span class="">{{ ucwords("keterangan") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value=""/>
         </div>
 
         <div class="text-center pt-0">
