@@ -4,6 +4,10 @@
     {{ ucwords(str_replace("_", " ", "mata_uang")) }}
 @endsection
 
+@section("root")
+    {{ route("mata_uang.index") }}
+@endsection
+
 @section("form-create")
     <form action="{{ route("mata_uang.update", $mata_uang->id) }}" method="POST">
         @csrf @method("PUT")

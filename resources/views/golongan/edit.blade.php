@@ -4,6 +4,10 @@
     {{ ucwords(str_replace("_", " ", "golongan")) }}
 @endsection
 
+@section("root")
+    {{ route("golongan.index") }}
+@endsection
+
 @section("form-create")
     <form action="{{ route("golongan.update", $golongan->kode) }}" method="POST">
         @csrf @method("PUT")

@@ -14,7 +14,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $suppliers = Supplier::all();
+        $suppliers = Supplier::orderBy("kode", "asc")->get();
         return view("supplier.index", compact("suppliers"));
     }
 
@@ -57,9 +57,9 @@ class SupplierController extends Controller
      * @param  \App\Supplier  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $supplier = Supplier::whereId($id)->get()->last();
+        $supplier = Supplier::where("kode", $kode)->get()->last();
         return view("supplier.edit", compact("supplier"));
     }
 
@@ -70,9 +70,9 @@ class SupplierController extends Controller
      * @param  \App\Supplier  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        Supplier::whereId($id)->update($request->except(["_token", "_method"]));
+        Supplier::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("supplier.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class SupplierController extends Controller
      * @param  \App\Supplier  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        Supplier::whereId($id)->delete();
+        Supplier::where("kode", $kode)->delete();
         return redirect()->route("supplier.index")->with("success", "Data berhasil dihapus");
     }
 }

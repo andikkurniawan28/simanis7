@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWilayahsTable extends Migration
+class CreateTerminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateWilayahsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wilayahs', function (Blueprint $table) {
-            $table->id();
+        Schema::create('termin', function (Blueprint $table) {
             $table->string("kode")->unique();
             $table->string("keterangan")->nullable();
+            $table->float("lama");
+            $table->float("disc")->nullable();
+            $table->float("hdisc")->nullable();
         });
     }
 
@@ -27,6 +29,6 @@ class CreateWilayahsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wilayahs');
+        Schema::dropIfExists('termins');
     }
 }

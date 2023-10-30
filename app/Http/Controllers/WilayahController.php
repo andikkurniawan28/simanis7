@@ -14,7 +14,7 @@ class WilayahController extends Controller
      */
     public function index()
     {
-        $wilayahs = Wilayah::all();
+        $wilayahs = Wilayah::orderBy("kode", "asc")->get();
         return view("wilayah.index", compact("wilayahs"));
     }
 
@@ -57,9 +57,9 @@ class WilayahController extends Controller
      * @param  \App\Wilayah  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $wilayah = Wilayah::whereId($id)->get()->last();
+        $wilayah = Wilayah::where("kode", $kode)->get()->last();
         return view("wilayah.edit", compact("wilayah"));
     }
 
@@ -70,9 +70,9 @@ class WilayahController extends Controller
      * @param  \App\Wilayah  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        Wilayah::whereId($id)->update($request->except(["_token", "_method"]));
+        Wilayah::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("wilayah.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class WilayahController extends Controller
      * @param  \App\Wilayah  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        Wilayah::whereId($id)->delete();
+        Wilayah::where("kode", $kode)->delete();
         return redirect()->route("wilayah.index")->with("success", "Data berhasil dihapus");
     }
 }

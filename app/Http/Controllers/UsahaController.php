@@ -14,7 +14,7 @@ class UsahaController extends Controller
      */
     public function index()
     {
-        $usahas = Usaha::all();
+        $usahas = Usaha::orderBy("kode", "asc")->get();
         return view("usaha.index", compact("usahas"));
     }
 
@@ -57,9 +57,9 @@ class UsahaController extends Controller
      * @param  \App\Usaha  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $usaha = Usaha::whereId($id)->get()->last();
+        $usaha = Usaha::where("kode", $kode)->get()->last();
         return view("usaha.edit", compact("usaha"));
     }
 
@@ -70,9 +70,9 @@ class UsahaController extends Controller
      * @param  \App\Usaha  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        Usaha::whereId($id)->update($request->except(["_token", "_method"]));
+        Usaha::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("usaha.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class UsahaController extends Controller
      * @param  \App\Usaha  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        Usaha::whereId($id)->delete();
+        Usaha::where("kode", $kode)->delete();
         return redirect()->route("usaha.index")->with("success", "Data berhasil dihapus");
     }
 }

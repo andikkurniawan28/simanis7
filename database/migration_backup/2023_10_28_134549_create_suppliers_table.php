@@ -13,14 +13,9 @@ class CreateSuppliersTable extends Migration
      */
     public function up()
     {
-        Schema::create('suppliers', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId("golongan_id")->constrained();
-            $table->foreignId("termin_id")->constrained();
-            $table->foreignId("mata_uang_id")->constrained();
+        Schema::create('supplier', function (Blueprint $table) {
             $table->string("kode")->unique();
-            $table->string("keterangan")->nullable();
-            $table->string("nama");
+            $table->string("nama")->nullable();
             $table->string("alamat1")->nullable();
             $table->string("alamat2")->nullable();
             $table->string("telp")->nullable();
@@ -28,12 +23,16 @@ class CreateSuppliersTable extends Migration
             $table->string("kota")->nullable();
             $table->string("nmkota")->nullable();
             $table->string("kodepos")->nullable();
+            $table->string("golongan")->nullable();
+            $table->string("keterangan")->nullable();
             $table->float("disc1")->nullable();
             $table->float("disc2")->nullable();
             $table->float("plafon")->nullable();
             $table->string("khusus")->nullable();
             $table->string("ekspedisi")->nullable();
             $table->string("status")->nullable();
+            $table->string("termin")->nullable();
+            $table->float("kurs")->nullable();
             $table->string("person")->nullable();
             $table->string("hp")->nullable();
             $table->string("ptelp")->nullable();

@@ -4,16 +4,13 @@
     {{ ucwords(str_replace("_", " ", "termin")) }}
 @endsection
 
-@section("form-create")
-    <form action="{{ route("termin.update", $termin->id) }}" method="POST">
-        @csrf @method("PUT")
+@section("root")
+    {{ route("termin.index") }}
+@endsection
 
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucwords("keterangan") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="{{ $termin->keterangan }}" required/>
-        </div>
+@section("form-create")
+    <form action="{{ route("termin.update", $termin->kode) }}" method="POST">
+        @csrf @method("PUT")
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
@@ -24,12 +21,19 @@
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ strtoupper("lama") }}</span>
+                <span class="">{{ ucwords("keterangan") }}</span>
             </label>
-            <input type="number" class="form-control form-control-solid" placeholder="" name="lama" value="{{ $termin->lama }}" step="any" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="{{ $termin->keterangan }}" />
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
+            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                <span class="">{{ strtoupper("lama") }}</span>
+            </label>
+            <input type="number" class="form-control form-control-solid" placeholder="" name="lama" value="{{ $termin->lama }}" step="any" />
+        </div>
+
+        {{-- <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                 <span class="required">{{ strtoupper("disc") }}</span>
             </label>
@@ -41,7 +45,7 @@
                 <span class="required">{{ strtoupper("hdisc") }}</span>
             </label>
             <input type="number" class="form-control form-control-solid" placeholder="" name="hdisc" value="{{ $termin->hdisc }}" step="any" required/>
-        </div>
+        </div> --}}
 
         <div class="text-center pt-0">
             <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">

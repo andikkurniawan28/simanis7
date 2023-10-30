@@ -14,7 +14,7 @@ class TerminController extends Controller
      */
     public function index()
     {
-        $termins = Termin::all();
+        $termins = Termin::orderBy("kode", "asc")->get();
         return view("termin.index", compact("termins"));
     }
 
@@ -57,9 +57,9 @@ class TerminController extends Controller
      * @param  \App\Termin  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $termin = Termin::whereId($id)->get()->last();
+        $termin = Termin::where("kode", $kode)->get()->last();
         return view("termin.edit", compact("termin"));
     }
 
@@ -70,9 +70,9 @@ class TerminController extends Controller
      * @param  \App\Termin  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        Termin::whereId($id)->update($request->except(["_token", "_method"]));
+        Termin::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("termin.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class TerminController extends Controller
      * @param  \App\Termin  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        Termin::whereId($id)->delete();
+        Termin::where("kode", $kode)->delete();
         return redirect()->route("termin.index")->with("success", "Data berhasil dihapus");
     }
 }

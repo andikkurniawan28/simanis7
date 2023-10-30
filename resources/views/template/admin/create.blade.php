@@ -12,7 +12,7 @@
                             <a href="../../demo7/dist/index.html" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item text-muted">@yield("title")</li>
-                        <li class="breadcrumb-item text-muted">Daftar @yield("title")</li>
+                        <li class="breadcrumb-item text-dark"><a class="text-dark" href="@yield("root")">Daftar @yield("title")</a></li>
                         <li class="breadcrumb-item text-dark">Tambah @yield("title")</li>
                     </ul>
                 </div>
