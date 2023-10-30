@@ -52,7 +52,7 @@
                                             </span>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <span class="menu-title">{{ ucfirst("gudang") }}</span>
+                                        <span class="menu-title">{{ ucwords("gudang") }}</span>
                                     </a>
                                 </div>
 
@@ -70,7 +70,7 @@
                                             </span>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <span class="menu-title">{{ ucfirst("pot") }}</span>
+                                        <span class="menu-title">{{ ucwords("pot") }}</span>
                                     </a>
                                 </div>
 
@@ -88,7 +88,7 @@
                                         <!--end::Svg Icon-->
                                     </span>
 
-                                    <span class="menu-title">{{ ucfirst("stock") }}</span>
+                                    <span class="menu-title">{{ ucwords("stock") }}</span>
                                         <span class="menu-arrow"></span>
                                     </span>
 
@@ -98,7 +98,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucfirst("golongan") }}</span>
+                                                <span class="menu-title">{{ ucwords("golongan") }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucfirst("sub golongan") }}</span>
+                                                <span class="menu-title">{{ ucwords("sub golongan") }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -120,7 +120,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucfirst("satuan") }}</span>
+                                                <span class="menu-title">{{ ucwords("satuan") }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -141,7 +141,7 @@
                                             </span>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <span class="menu-title">{{ ucfirst("salesman") }}</span>
+                                        <span class="menu-title">{{ ucwords(str_replace("_", " ", "salesman")) }}</span>
                                     </a>
                                 </div>
 
@@ -159,7 +159,7 @@
                                         <!--end::Svg Icon-->
                                     </span>
 
-                                    <span class="menu-title">{{ ucfirst("Supplier & Customer") }}</span>
+                                    <span class="menu-title">{{ ucwords("Supplier & Customer") }}</span>
                                         <span class="menu-arrow"></span>
                                     </span>
 
@@ -169,7 +169,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucfirst("termin") }}</span>
+                                                <span class="menu-title">{{ ucwords("termin") }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -180,7 +180,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucfirst("wilayah") }}</span>
+                                                <span class="menu-title">{{ ucwords("wilayah") }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -191,7 +191,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucfirst("usaha") }}</span>
+                                                <span class="menu-title">{{ ucwords("usaha") }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -202,7 +202,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucfirst("supplier") }}</span>
+                                                <span class="menu-title">{{ ucwords("supplier") }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -213,7 +213,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucfirst("customer") }}</span>
+                                                <span class="menu-title">{{ ucwords("customer") }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -234,28 +234,61 @@
                                         <!--end::Svg Icon-->
                                     </span>
 
-                                    <span class="menu-title">{{ ucfirst("akuntansi") }}</span>
+                                    <span class="menu-title">{{ ucwords("akuntansi") }}</span>
                                         <span class="menu-arrow"></span>
                                     </span>
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="{{ route("bank.index") }}">
+                                            <a class="menu-link" href="{{ route("kas_bank.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucfirst("Kas/Bank") }}</span>
+                                                <span class="menu-title">{{ ucwords(str_replace("_", " ", "kas_bank")) }}</span>
                                             </a>
                                         </div>
                                     </div>
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="{{ route("rekbi.index") }}">
+                                            <a class="menu-link" href="{{ route("rekening_balance_income.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucfirst("Rek BI") }}</span>
+                                                <span class="menu-title">{{ ucwords(str_replace("_", " ", "rekening_balance_income")) }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="{{ route("rekening_induk.index") }}">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">{{ ucwords(str_replace("_", " ", "rekening_induk")) }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="{{ route("rekening_sub.index") }}">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">{{ ucwords(str_replace("_", " ", "rekening_sub")) }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="{{ route("rekening_akuntansi.index") }}">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">{{ ucwords(str_replace("_", " ", "rekening_akuntansi")) }}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -279,7 +312,7 @@
 
                                 <div class="menu-item">
                                     <div class="menu-content pb-2">
-                                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ ucfirst("transaksi") }}</span>
+                                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ ucwords("transaksi") }}</span>
                                     </div>
                                 </div>
 
@@ -315,7 +348,7 @@
                                             </span>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <span class="menu-title">{{ ucfirst("gudang") }}</span>
+                                        <span class="menu-title">{{ ucwords("gudang") }}</span>
                                     </a>
                                 </div>
 
@@ -333,7 +366,7 @@
                                             </span>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <span class="menu-title">{{ ucfirst("pot") }}</span>
+                                        <span class="menu-title">{{ ucwords("pot") }}</span>
                                     </a>
                                 </div>
 
@@ -351,7 +384,7 @@
                                         <!--end::Svg Icon-->
                                     </span>
 
-                                    <span class="menu-title">{{ ucfirst("stock") }}</span>
+                                    <span class="menu-title">{{ ucwords("stock") }}</span>
                                         <span class="menu-arrow"></span>
                                     </span>
 
@@ -361,7 +394,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">{{ ucfirst("golongan") }}</span>
+                                                <span class="menu-title">{{ ucwords("golongan") }}</span>
                                             </a>
                                         </div>
                                     </div>

@@ -14,7 +14,7 @@ class GudangController extends Controller
      */
     public function index()
     {
-        $gudangs = Gudang::all();
+        $gudangs = Gudang::orderBy("id", "asc")->get();
         return view("gudang.index", compact("gudangs"));
     }
 

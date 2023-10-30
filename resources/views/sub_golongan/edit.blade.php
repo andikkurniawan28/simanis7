@@ -1,7 +1,7 @@
 @extends("template.admin.edit")
 
 @section("title")
-    {{ ucfirst(str_replace("_", " ", "sub_golongan")) }}
+    {{ ucwords(str_replace("_", " ", "sub_golongan")) }}
 @endsection
 
 @section("form-create")
@@ -10,14 +10,14 @@
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("keterangan") }}</span>
+                <span class="required">{{ ucwords("keterangan") }}</span>
             </label>
             <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="{{ $sub_golongan->keterangan }}" required/>
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("kode") }}</span>
+                <span class="required">{{ ucwords("kode") }}</span>
             </label>
             <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="{{ $sub_golongan->kode }}" required/>
         </div>

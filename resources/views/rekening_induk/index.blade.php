@@ -1,11 +1,11 @@
 @extends("template.admin.index")
 
 @section("title")
-    {{ ucfirst(str_replace("_", " ", "Rek BI")) }}
+    {{ ucfirst(str_replace("_", " ", "rekening_induk")) }}
 @endsection
 
 @section("form-create")
-    {{ route("rekbi.create") }}
+    {{ route("rekening_induk.create") }}
 @endsection
 
 @section("table")
@@ -24,16 +24,16 @@
             </tr>
         </thead>
         <tbody class="fw-bold text-gray-600">
-        @foreach ($rekbis as $rekbi)
+        @foreach ($rekening_induks as $rekening_induk)
             <tr class="text-center">
-                <td>{{ $rekbi->kode }}</td>
-                <td>{{ $rekbi->nama }}</td>
-                <td>{{ $rekbi->dk }}</td>
-                <td>{{ $rekbi->kelas }}</td>
-                <td>{{ $rekbi->balinc }}</td>
-                <td>{{ $rekbi->urutfbi }}</td>
-                <td>{{ $rekbi->urutkbi }}</td>
-                <td>{{ $rekbi->klpbi }}</td>
+                <td>{{ $rekening_induk->kode }}</td>
+                <td>{{ $rekening_induk->nama }}</td>
+                <td>{{ $rekening_induk->dk }}</td>
+                <td>{{ $rekening_induk->kelas }}</td>
+                <td>{{ $rekening_induk->balinc }}</td>
+                <td>{{ $rekening_induk->urutfbi }}</td>
+                <td>{{ $rekening_induk->urutkbi }}</td>
+                <td>{{ $rekening_induk->klpbi }}</td>
                 <td>
                     <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">{{ ucfirst("tindakan") }}
                         <span class="svg-icon svg-icon-5 m-0">
@@ -44,10 +44,10 @@
                     </a>
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                         <div class="menu-item px-3">
-                            <a href="{{ route("rekbi.edit", $rekbi->id) }}" class="menu-link px-3">{{ ucfirst("edit") }}</a>
+                            <a href="{{ route("rekening_induk.edit", $rekening_induk->id) }}" class="menu-link px-3">{{ ucfirst("edit") }}</a>
                         </div>
                         <div class="menu-item px-3">
-                            <form action="{{ route("rekbi.destroy", $rekbi->id) }}" method="POST" id="form-delete">
+                            <form action="{{ route("rekening_induk.destroy", $rekening_induk->id) }}" method="POST" id="form-delete">
                                 @csrf @method("DELETE")
                                 <a class="menu-link px-3" onclick="submitForm()">{{ ucfirst("hapus") }}</a>
                                 <script>

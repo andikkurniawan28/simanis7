@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRekeningAkuntasisTable extends Migration
+class CreateRekeningAkuntansisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,15 +15,15 @@ class CreateRekeningAkuntasisTable extends Migration
     {
         Schema::create('rekening_akuntansis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("rekening_utama_id")->constrained();
+            $table->foreignId("rekening_induk_id")->constrained();
             $table->foreignId("rekening_sub_id")->constrained();
             $table->string("kdprs");
             $table->string("kode")->unique();
             $table->string("name");
-            $table->string("saldonormal");
-            $table->string("balinc");
-            $table->string("urutkbi");
-            $table->string("kbi");
+            $table->string("saldo_normal");
+            $table->string("balance_income");
+            $table->string("urutan_kelompok_balance_income");
+            $table->string("kelompok_balance_income");
             $table->string("urutfbi");
             $table->string("ppn");
         });

@@ -18,8 +18,8 @@ class CreateTerminsTable extends Migration
             $table->string("kode")->unique();
             $table->string("keterangan")->nullable();
             $table->float("lama");
-            $table->float("disc");
-            $table->float("hdisc");
+            $table->float("disc")->nullable();
+            $table->float("hdisc")->nullable();
         });
     }
 

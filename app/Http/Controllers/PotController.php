@@ -14,7 +14,7 @@ class PotController extends Controller
      */
     public function index()
     {
-        $pots = Pot::all();
+        $pots = Pot::orderBy("id", "asc")->get();
         return view("pot.index", compact("pots"));
     }
 

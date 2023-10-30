@@ -14,7 +14,7 @@ class GolonganController extends Controller
      */
     public function index()
     {
-        $golongans = Golongan::all();
+        $golongans = Golongan::orderBy("id", "asc")->get();
         return view("golongan.index", compact("golongans"));
     }
 

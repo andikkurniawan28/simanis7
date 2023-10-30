@@ -14,7 +14,7 @@ class MataUangController extends Controller
      */
     public function index()
     {
-        $mata_uangs = MataUang::all();
+        $mata_uangs = MataUang::orderBy("id", "desc")->get();
         return view("mata_uang.index", compact("mata_uangs"));
     }
 

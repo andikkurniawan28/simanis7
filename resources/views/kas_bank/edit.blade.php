@@ -5,28 +5,28 @@
 @endsection
 
 @section("form-create")
-    <form action="{{ route("bank.update", $bank->id) }}" method="POST">
+    <form action="{{ route("kas_bank.update", $kas_bank->id) }}" method="POST">
         @csrf @method("PUT")
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                 <span class="required">{{ ucfirst("keterangan") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="{{ $bank->keterangan }}" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="{{ $kas_bank->keterangan }}" required/>
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                 <span class="required">{{ ucfirst("kode") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="{{ $bank->kode }}" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="{{ $kas_bank->kode }}" required/>
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                 <span class="required">{{ ucfirst("rekening") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="rekening" value="{{ $bank->rekening }}" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="rekening" value="{{ $kas_bank->rekening }}" required/>
         </div>
 
         <div class="text-center pt-0">

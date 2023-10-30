@@ -15,14 +15,14 @@ class CreateRekeningSubsTable extends Migration
     {
         Schema::create('rekening_subs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("rekbi_id")->constrained();
-            $table->foreignId("rekening_utama_id")->constrained();
+            $table->foreignId("rekening_balance_income_id")->constrained();
+            $table->foreignId("rekening_induk_id")->constrained();
             $table->string("kdprs");
             $table->string("kode")->unique();
-            $table->string("name");
-            $table->string("balinc");
-            $table->string("urutkbi");
-            $table->string("klpbi");
+            $table->string("nama");
+            $table->string("balance_income");
+            $table->string("urutan_kelompok_balance_income");
+            $table->string("kelompok_balance_income");
             $table->string("urutfbi");
             $table->string("saldo");
         });

@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PotController;
-use App\Http\Controllers\RekbiController;
 use App\Http\Controllers\UsahaController;
 use App\Http\Controllers\GudangController;
 use App\Http\Controllers\SatuanController;
@@ -14,7 +13,11 @@ use App\Http\Controllers\GolonganController;
 use App\Http\Controllers\MataUangController;
 use App\Http\Controllers\SalesmanController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\RekeningSubController;
 use App\Http\Controllers\SubGolonganController;
+use App\Http\Controllers\RekeningIndukController;
+use App\Http\Controllers\RekeningAkuntansiController;
+use App\Http\Controllers\RekeningBalanceIncomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,18 +40,21 @@ Route::get('login', function () {
 
 // Master
 Route::resources([
-    "mata_uang"     => "MataUangController",
-    "gudang"        => "GudangController",
-    "pot"           => "PotController",
-    "golongan"      => "GolonganController",
-    "sub_golongan"  => "SubGolonganController",
-    "satuan"        => "SatuanController",
-    "salesman"      => "SalesmanController",
-    "termin"        => "TerminController",
-    "wilayah"       => "WilayahController",
-    "usaha"         => "UsahaController",
-    "supplier"      => "SupplierController",
-    "customer"      => "CustomerController",
-    "kas_bank"      => "KasBankController",
-    "rekbi"         => "RekbiController",
+    "mata_uang"                 => "MataUangController",
+    "gudang"                    => "GudangController",
+    "pot"                       => "PotController",
+    "golongan"                  => "GolonganController",
+    "sub_golongan"              => "SubGolonganController",
+    "satuan"                    => "SatuanController",
+    "salesman"                  => "SalesmanController",
+    "termin"                    => "TerminController",
+    "wilayah"                   => "WilayahController",
+    "usaha"                     => "UsahaController",
+    "supplier"                  => "SupplierController",
+    "customer"                  => "CustomerController",
+    "kas_bank"                  => "KasBankController",
+    "rekening_balance_income"   => "RekeningBalanceIncomeController",
+    "rekening_induk"            => "RekeningIndukController",
+    "rekening_sub"              => "RekeningSubController",
+    "rekening_akuntansi"        => "RekeningAkuntansiController",
 ]);

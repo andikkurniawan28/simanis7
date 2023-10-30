@@ -5,7 +5,7 @@
 @endsection
 
 @section("form-create")
-    {{ route("bank.create") }}
+    {{ route("kas_bank.create") }}
 @endsection
 
 @section("table")
@@ -19,11 +19,11 @@
             </tr>
         </thead>
         <tbody class="fw-bold text-gray-600">
-        @foreach ($banks as $bank)
+        @foreach ($kas_banks as $kas_bank)
             <tr class="text-center">
-                <td>{{ $bank->keterangan }}</td>
-                <td>{{ $bank->kode }}</td>
-                <td>{{ $bank->rekening }}</td>
+                <td>{{ $kas_bank->keterangan }}</td>
+                <td>{{ $kas_bank->kode }}</td>
+                <td>{{ $kas_bank->rekening }}</td>
                 <td>
                     <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">{{ ucfirst("tindakan") }}
                         <span class="svg-icon svg-icon-5 m-0">
@@ -34,10 +34,10 @@
                     </a>
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                         <div class="menu-item px-3">
-                            <a href="{{ route("bank.edit", $bank->id) }}" class="menu-link px-3">{{ ucfirst("edit") }}</a>
+                            <a href="{{ route("kas_bank.edit", $kas_bank->id) }}" class="menu-link px-3">{{ ucfirst("edit") }}</a>
                         </div>
                         <div class="menu-item px-3">
-                            <form action="{{ route("bank.destroy", $bank->id) }}" method="POST" id="form-delete">
+                            <form action="{{ route("kas_bank.destroy", $kas_bank->id) }}" method="POST" id="form-delete">
                                 @csrf @method("DELETE")
                                 <a class="menu-link px-3" onclick="submitForm()">{{ ucfirst("hapus") }}</a>
                                 <script>

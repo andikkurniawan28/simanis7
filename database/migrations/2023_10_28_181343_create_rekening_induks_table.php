@@ -17,9 +17,9 @@ class CreateRekeningInduksTable extends Migration
             $table->id();
             $table->string("kdprs");
             $table->string("kode")->unique();
-            $table->string("name");
+            $table->string("nama");
             $table->string("urutfbi");
-            $table->string("klpbi");
+            $table->string("kelompok_balance_income");
             $table->string("debit_kredit");
             $table->string("balance_income");
         });

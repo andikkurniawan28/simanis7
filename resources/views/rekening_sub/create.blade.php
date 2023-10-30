@@ -1,11 +1,11 @@
 @extends("template.admin.create")
 
 @section("title")
-    {{ ucfirst(str_replace("_", " ", "Rek BI")) }}
+    {{ ucfirst(str_replace("_", " ", "rekening_sub")) }}
 @endsection
 
 @section("form-create")
-    <form action="{{ route("rekbi.store") }}" method="POST">
+    <form action="{{ route("rekening_sub.store") }}" method="POST">
         @csrf @method("POST")
 
         <div class="d-flex flex-column mb-7 fv-row">

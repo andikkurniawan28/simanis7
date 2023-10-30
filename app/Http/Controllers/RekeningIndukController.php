@@ -14,7 +14,8 @@ class RekeningIndukController extends Controller
      */
     public function index()
     {
-        //
+        $rekening_induks = RekeningInduk::all();
+        return view("rekening_induk.index", compact("rekening_induks"));
     }
 
     /**
@@ -24,7 +25,7 @@ class RekeningIndukController extends Controller
      */
     public function create()
     {
-        //
+        return view("rekening_induk.create");
     }
 
     /**
@@ -35,16 +36,17 @@ class RekeningIndukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        RekeningInduk::create($request->all());
+        return redirect()->route("rekening_induk.index")->with("success", "Data berhasil disimpan");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\RekeningInduk  $rekmain
+     * @param  \App\RekeningInduk  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function show(RekeningInduk $rekmain)
+    public function show(RekeningInduk $mataUang)
     {
         //
     }
@@ -52,34 +54,37 @@ class RekeningIndukController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\RekeningInduk  $rekmain
+     * @param  \App\RekeningInduk  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit(RekeningInduk $rekmain)
+    public function edit($id)
     {
-        //
+        $rekening_induk = RekeningInduk::whereId($id)->get()->last();
+        return view("rekening_induk.edit", compact("rekening_induk"));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\RekeningInduk  $rekmain
+     * @param  \App\RekeningInduk  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RekeningInduk $rekmain)
+    public function update(Request $request, $id)
     {
-        //
+        RekeningInduk::whereId($id)->update($request->except(["_token", "_method"]));
+        return redirect()->route("rekening_induk.index")->with("success", "Data berhasil diupdate");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\RekeningInduk  $rekmain
+     * @param  \App\RekeningInduk  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RekeningInduk $rekmain)
+    public function destroy($id)
     {
-        //
+        RekeningInduk::whereId($id)->delete();
+        return redirect()->route("rekening_induk.index")->with("success", "Data berhasil dihapus");
     }
 }

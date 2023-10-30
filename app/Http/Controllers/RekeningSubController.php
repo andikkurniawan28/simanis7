@@ -14,7 +14,8 @@ class RekeningSubController extends Controller
      */
     public function index()
     {
-        //
+        $rekening_subs = RekeningSub::all();
+        return view("rekening_sub.index", compact("rekening_subs"));
     }
 
     /**
@@ -24,7 +25,7 @@ class RekeningSubController extends Controller
      */
     public function create()
     {
-        //
+        return view("rekening_sub.create");
     }
 
     /**
@@ -35,16 +36,17 @@ class RekeningSubController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        RekeningSub::create($request->all());
+        return redirect()->route("rekening_sub.index")->with("success", "Data berhasil disimpan");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\RekeningSub  $reksub
+     * @param  \App\RekeningSub  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function show(RekeningSub $reksub)
+    public function show(RekeningSub $mataUang)
     {
         //
     }
@@ -52,34 +54,37 @@ class RekeningSubController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\RekeningSub  $reksub
+     * @param  \App\RekeningSub  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit(RekeningSub $reksub)
+    public function edit($id)
     {
-        //
+        $rekening_sub = RekeningSub::whereId($id)->get()->last();
+        return view("rekening_sub.edit", compact("rekening_sub"));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\RekeningSub  $reksub
+     * @param  \App\RekeningSub  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RekeningSub $reksub)
+    public function update(Request $request, $id)
     {
-        //
+        RekeningSub::whereId($id)->update($request->except(["_token", "_method"]));
+        return redirect()->route("rekening_sub.index")->with("success", "Data berhasil diupdate");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\RekeningSub  $reksub
+     * @param  \App\RekeningSub  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RekeningSub $reksub)
+    public function destroy($id)
     {
-        //
+        RekeningSub::whereId($id)->delete();
+        return redirect()->route("rekening_sub.index")->with("success", "Data berhasil dihapus");
     }
 }

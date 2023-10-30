@@ -5,7 +5,7 @@
 @endsection
 
 @section("form-create")
-    <form action="{{ route("bank.store") }}" method="POST">
+    <form action="{{ route("kas_bank.store") }}" method="POST">
         @csrf @method("POST")
 
         <div class="d-flex flex-column mb-7 fv-row">

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Rekbi;
+use App\RekeningAkuntansi;
 use Illuminate\Http\Request;
 
-class RekbiController extends Controller
+class RekeningAkuntansiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class RekbiController extends Controller
      */
     public function index()
     {
-        $rekbis = Rekbi::all();
-        return view("rekbi.index", compact("rekbis"));
+        $rekening_akuntansis = RekeningAkuntansi::all();
+        return view("rekening_akuntansi.index", compact("rekening_akuntansis"));
     }
 
     /**
@@ -25,7 +25,7 @@ class RekbiController extends Controller
      */
     public function create()
     {
-        return view("rekbi.create");
+        return view("rekening_akuntansi.create");
     }
 
     /**
@@ -36,17 +36,17 @@ class RekbiController extends Controller
      */
     public function store(Request $request)
     {
-        Rekbi::create($request->all());
-        return redirect()->route("rekbi.index")->with("success", "Data berhasil disimpan");
+        RekeningAkuntansi::create($request->all());
+        return redirect()->route("rekening_akuntansi.index")->with("success", "Data berhasil disimpan");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Rekbi  $mataUang
+     * @param  \App\RekeningAkuntansi  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function show(Rekbi $mataUang)
+    public function show(RekeningAkuntansi $mataUang)
     {
         //
     }
@@ -54,37 +54,37 @@ class RekbiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Rekbi  $mataUang
+     * @param  \App\RekeningAkuntansi  $mataUang
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $rekbi = Rekbi::whereId($id)->get()->last();
-        return view("rekbi.edit", compact("rekbi"));
+        $rekening_akuntansi = RekeningAkuntansi::whereId($id)->get()->last();
+        return view("rekening_akuntansi.edit", compact("rekening_akuntansi"));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rekbi  $mataUang
+     * @param  \App\RekeningAkuntansi  $mataUang
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        Rekbi::whereId($id)->update($request->except(["_token", "_method"]));
-        return redirect()->route("rekbi.index")->with("success", "Data berhasil diupdate");
+        RekeningAkuntansi::whereId($id)->update($request->except(["_token", "_method"]));
+        return redirect()->route("rekening_akuntansi.index")->with("success", "Data berhasil diupdate");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Rekbi  $mataUang
+     * @param  \App\RekeningAkuntansi  $mataUang
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Rekbi::whereId($id)->delete();
-        return redirect()->route("rekbi.index")->with("success", "Data berhasil dihapus");
+        RekeningAkuntansi::whereId($id)->delete();
+        return redirect()->route("rekening_akuntansi.index")->with("success", "Data berhasil dihapus");
     }
 }
