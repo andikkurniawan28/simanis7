@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\RekeningSub;
+use App\RekeningInduk;
 use Illuminate\Http\Request;
+use App\RekeningBalanceIncome;
 
 class RekeningSubController extends Controller
 {
@@ -14,7 +16,7 @@ class RekeningSubController extends Controller
      */
     public function index()
     {
-        $rekening_subs = RekeningSub::all();
+        $rekening_subs = RekeningSub::orderBy("kode", "asc")->get();
         return view("rekening_sub.index", compact("rekening_subs"));
     }
 
@@ -25,7 +27,12 @@ class RekeningSubController extends Controller
      */
     public function create()
     {
-        return view("rekening_sub.create");
+        $rekening_balance_incomes = RekeningBalanceIncome::all();
+        $rekening_induks = RekeningInduk::all();
+        return view("rekening_sub.create", compact(
+            "rekening_balance_incomes",
+            "rekening_induks",
+        ));
     }
 
     /**
@@ -57,10 +64,12 @@ class RekeningSubController extends Controller
      * @param  \App\RekeningSub  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $rekening_sub = RekeningSub::whereId($id)->get()->last();
-        return view("rekening_sub.edit", compact("rekening_sub"));
+        $rekening_sub = RekeningSub::where("kode", $kode)->get()->last();
+        $rekening_balance_incomes = RekeningBalanceIncome::all();
+        $rekening_induks = RekeningInduk::all();
+        return view("rekening_sub.edit", compact("rekening_sub", "rekening_balance_incomes", "rekening_induks"));
     }
 
     /**
@@ -70,9 +79,9 @@ class RekeningSubController extends Controller
      * @param  \App\RekeningSub  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        RekeningSub::whereId($id)->update($request->except(["_token", "_method"]));
+        RekeningSub::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("rekening_sub.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +91,9 @@ class RekeningSubController extends Controller
      * @param  \App\RekeningSub  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        RekeningSub::whereId($id)->delete();
+        RekeningSub::where("kode", $kode)->delete();
         return redirect()->route("rekening_sub.index")->with("success", "Data berhasil dihapus");
     }
 }

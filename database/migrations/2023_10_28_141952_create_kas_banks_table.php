@@ -13,8 +13,7 @@ class CreateKasBanksTable extends Migration
      */
     public function up()
     {
-        Schema::create('kas_banks', function (Blueprint $table) {
-            $table->id();
+        Schema::create('bank', function (Blueprint $table) {
             $table->string("kode")->unique();
             $table->string("keterangan")->nullable();
             $table->string("rekening")->unique();

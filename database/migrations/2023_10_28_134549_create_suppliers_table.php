@@ -16,7 +16,7 @@ class CreateSuppliersTable extends Migration
         Schema::create('supplier', function (Blueprint $table) {
             $table->string("kode")->unique();
             $table->string("nama")->nullable();
-            $table->string("alamat1")->nullable();
+            $table->string("alamat")->nullable();
             $table->string("alamat2")->nullable();
             $table->string("telp")->nullable();
             $table->string("fax")->nullable();

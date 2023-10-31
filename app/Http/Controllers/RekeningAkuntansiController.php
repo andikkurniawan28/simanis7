@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\RekeningAkuntansi;
+use App\RekeningInduk;
 use Illuminate\Http\Request;
+use App\RekeningBalanceIncome;
+use App\RekeningSub;
 
 class RekeningAkuntansiController extends Controller
 {
@@ -14,7 +17,7 @@ class RekeningAkuntansiController extends Controller
      */
     public function index()
     {
-        $rekening_akuntansis = RekeningAkuntansi::all();
+        $rekening_akuntansis = RekeningAkuntansi::orderBy("kode", "asc")->get();
         return view("rekening_akuntansi.index", compact("rekening_akuntansis"));
     }
 
@@ -25,7 +28,14 @@ class RekeningAkuntansiController extends Controller
      */
     public function create()
     {
-        return view("rekening_akuntansi.create");
+        $rekening_balance_incomes = RekeningBalanceIncome::all();
+        $rekening_induks = RekeningInduk::all();
+        $rekening_subs = RekeningSub::all();
+        return view("rekening_akuntansi.create", compact(
+            "rekening_balance_incomes",
+            "rekening_induks",
+            "rekening_subs",
+        ));
     }
 
     /**
@@ -57,10 +67,18 @@ class RekeningAkuntansiController extends Controller
      * @param  \App\RekeningAkuntansi  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $rekening_akuntansi = RekeningAkuntansi::whereId($id)->get()->last();
-        return view("rekening_akuntansi.edit", compact("rekening_akuntansi"));
+        $rekening_akuntansi = RekeningAkuntansi::where("kode", $kode)->get()->last();
+        $rekening_balance_incomes = RekeningBalanceIncome::all();
+        $rekening_induks = RekeningInduk::all();
+        $rekening_subs = RekeningSub::all();
+        return view("rekening_akuntansi.edit", compact(
+            "rekening_akuntansi",
+            "rekening_balance_incomes",
+            "rekening_induks",
+            "rekening_subs",
+        ));
     }
 
     /**
@@ -70,9 +88,9 @@ class RekeningAkuntansiController extends Controller
      * @param  \App\RekeningAkuntansi  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        RekeningAkuntansi::whereId($id)->update($request->except(["_token", "_method"]));
+        RekeningAkuntansi::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("rekening_akuntansi.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +100,9 @@ class RekeningAkuntansiController extends Controller
      * @param  \App\RekeningAkuntansi  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        RekeningAkuntansi::whereId($id)->delete();
+        RekeningAkuntansi::where("kode", $kode)->delete();
         return redirect()->route("rekening_akuntansi.index")->with("success", "Data berhasil dihapus");
     }
 }

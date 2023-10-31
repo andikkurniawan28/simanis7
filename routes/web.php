@@ -15,7 +15,9 @@ use App\Http\Controllers\SalesmanController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\RekeningSubController;
 use App\Http\Controllers\SubGolonganController;
+use App\Http\Controllers\CustomerAktifController;
 use App\Http\Controllers\RekeningIndukController;
+use App\Http\Controllers\SupplierAktifController;
 use App\Http\Controllers\RekeningAkuntansiController;
 use App\Http\Controllers\RekeningBalanceIncomeController;
 
@@ -59,3 +61,9 @@ Route::resources([
     "rekening_sub"              => "RekeningSubController",
     "rekening_akuntansi"        => "RekeningAkuntansiController",
 ]);
+
+Route::get("stocks/{status?}", "StockAktifController")->name("stock_aktif");
+Route::get("suppliers/{status?}", "SupplierAktifController")->name("supplier_aktif");
+Route::get("customers/{status?}", "CustomerAktifController")->name("customer_aktif");
+
+Route::resource("user", "UserController");

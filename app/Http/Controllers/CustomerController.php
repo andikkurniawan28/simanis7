@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Usaha;
+use App\Termin;
+use App\Wilayah;
 use App\Customer;
 use Illuminate\Http\Request;
 
@@ -14,8 +17,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
-        return view("customer.index", compact("customers"));
+        return redirect()->route("customer_aktif", "Y");
     }
 
     /**
@@ -25,7 +27,14 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view("customer.create");
+        $wilayahs = Wilayah::all();
+        $usahas = Usaha::all();
+        $termins = Termin::all();
+        return view("customer.create", compact(
+            "wilayahs",
+            "usahas",
+            "termins",
+        ));
     }
 
     /**
@@ -57,10 +66,18 @@ class CustomerController extends Controller
      * @param  \App\Customer  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $customer = Customer::whereId($id)->get()->last();
-        return view("customer.edit", compact("customer"));
+        $customer = Customer::where("kode", $kode)->get()->last();
+        $wilayahs = Wilayah::all();
+        $usahas = Usaha::all();
+        $termins = Termin::all();
+        return view("customer.edit", compact(
+            "customer",
+            "wilayahs",
+            "usahas",
+            "termins",
+        ));
     }
 
     /**
@@ -70,9 +87,9 @@ class CustomerController extends Controller
      * @param  \App\Customer  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        Customer::whereId($id)->update($request->except(["_token", "_method"]));
+        Customer::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("customer.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +99,9 @@ class CustomerController extends Controller
      * @param  \App\Customer  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        Customer::whereId($id)->delete();
+        Customer::where("kode", $kode)->delete();
         return redirect()->route("customer.index")->with("success", "Data berhasil dihapus");
     }
 }

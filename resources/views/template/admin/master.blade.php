@@ -35,6 +35,9 @@ License: For each use you must have a valid license purchased only from above li
 		<link href="/metronic/dist/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="/metronic/dist/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
+        {{-- <style>
+            input { text-transform: uppercase; }
+        </style> --}}
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -462,11 +465,11 @@ License: For each use you must have a valid license purchased only from above li
 													<img alt="img" class="rounded w-200px" src="/metronic/dist/assets/media/demos/demo1.png" />
 												</div>
 												<!--end::Image-->
-												<!--begin::Link-->
+												{{-- <!--begin::Link-->
 												<div class="overlay-layer bg-dark bg-opacity-10 rounded">
 													<a href="#" class="btn btn-sm btn-primary btn-shadow">Explore</a>
 												</div>
-												<!--end::Link-->
+												<!--end::Link--> --}}
 											</div>
 											<!--end::Item-->
 											<!--begin::Item-->
@@ -1061,11 +1064,11 @@ License: For each use you must have a valid license purchased only from above li
 			<!--end::Messenger-->
 		</div>
 		<!--end::Chat drawer-->
-		<!--begin::Exolore drawer toggle-->
+		{{-- <!--begin::Exolore drawer toggle-->
 		<button id="kt_explore_toggle" class="explore-toggle btn btn-sm bg-body btn-color-gray-700 btn-active-primary shadow-sm position-fixed px-5 fw-bolder zindex-2 top-50 mt-10 end-0 transform-90 fs-6 rounded-top-0" title="Explore Metronic" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-trigger="hover">
 			<span id="kt_explore_toggle_label">Explore</span>
 		</button>
-		<!--end::Exolore drawer toggle-->
+		<!--end::Exolore drawer toggle--> --}}
 		<!--begin::Exolore drawer-->
 		<div id="kt_explore" class="bg-body" data-kt-drawer="true" data-kt-drawer-name="explore" data-kt-drawer-activate="true" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'350px', 'lg': '475px'}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_explore_toggle" data-kt-drawer-close="#kt_explore_close">
 			<!--begin::Card-->

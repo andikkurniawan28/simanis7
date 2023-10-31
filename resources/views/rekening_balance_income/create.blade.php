@@ -1,7 +1,11 @@
 @extends("template.admin.create")
 
 @section("title")
-    {{ ucfirst(str_replace("_", " ", "rekening_balance_income")) }}
+    {{ ucwords(str_replace("_", " ", "rekening_balance_income")) }}
+@endsection
+
+@section("root")
+    {{ route("rekening_balance_income.index") }}
 @endsection
 
 @section("form-create")
@@ -10,58 +14,66 @@
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("kode") }}</span>
+                <span class="required">{{ ucwords("kode") }}</span>
             </label>
             <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="" required/>
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("nama") }}</span>
+                <span class="required">{{ ucwords("nama") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="nama" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="nama" value=""/ required>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords("debit / kredit") }}</span>
+                    </label>
+                    <select name="dk" class="form-control">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="D">Debit</option>
+                        <option value="K">Kredit</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords("balance / income") }}</span>
+                    </label>
+                    <select name="balinc" class="form-control">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="B">Balance</option>
+                        <option value="I">Income</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords("urutan FBI") }}</span>
+                    </label>
+                    <input type="number" class="form-control form-control-solid" placeholder="" name="urutfbi" value=""/ >
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords("urutan KBI") }}</span>
+                    </label>
+                    <input type="number" class="form-control form-control-solid" placeholder="" name="urutkbi" value=""/ >
+                </div>
+            </div>
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("dk") }}</span>
+                <span class="">{{ ucwords("kelompok balance income") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="dk" value="" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("kelas") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="kelas" value="" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("balinc") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="balinc" value="" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("urutfbi") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="urutfbi" value="" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("urutkbi") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="urutkbi" value="" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("klpbi") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="klpbi" value="" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="klpbi" value=""/ required>
         </div>
 
         <div class="text-center pt-0">

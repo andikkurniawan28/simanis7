@@ -23,7 +23,7 @@
         <tbody>
         @foreach ($mata_uangs as $mata_uang)
             <tr>
-                <td>{{ $mata_uang->id }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ date("d-m-Y", strtotime($mata_uang->tgl)) }}</td>
                 <td>{{ $mata_uang->kode }}</td>
                 <td>{{ $mata_uang->kurs }}</td>
@@ -38,19 +38,19 @@
                     </a>
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                         <div class="menu-item px-3">
-                            <a href="{{ route("mata_uang.edit", $mata_uang->id) }}" class="menu-link px-3">{{ ucwords("edit") }}</a>
+                            <a href="{{ route("mata_uang.edit", $mata_uang->kode) }}" class="menu-link px-3">{{ ucwords("edit") }}</a>
                         </div>
-                        <div class="menu-item px-3">
-                            <form action="{{ route("mata_uang.destroy", $mata_uang->id) }}" method="POST" id="form-delete{{ $mata_uang->id }}">
+                        {{-- <div class="menu-item px-3">
+                            <form action="{{ route("mata_uang.destroy", $mata_uang->kode) }}" method="POST" id="form-delete{{ $mata_uang->id }}">
                                 @csrf @method("DELETE")
-                                <a class="menu-link px-3" onclick="submitForm{{ $mata_uang->id }}()">{{ ucwords("hapus") }}</a>
+                                <a class="menu-link px-3" onclick="submitForm{{ $mata_uang->kode }}()">{{ ucwords("hapus") }}</a>
                                 <script>
-                                    function submitForm{{ $mata_uang->id }}() {
+                                    function submitForm{{ $mata_uang->kode }}() {
                                         document.getElementById("form-delete{{ $mata_uang->id }}").submit();
                                     }
                                 </script>
                             </form>
-                        </div>
+                        </div> --}}
                     </div>
                 </td>
             </tr>

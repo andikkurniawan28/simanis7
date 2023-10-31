@@ -14,7 +14,7 @@ class MataUangController extends Controller
      */
     public function index()
     {
-        $mata_uangs = MataUang::orderBy("id", "desc")->get();
+        $mata_uangs = MataUang::orderBy("tgl", "desc")->get();
         return view("mata_uang.index", compact("mata_uangs"));
     }
 
@@ -57,9 +57,9 @@ class MataUangController extends Controller
      * @param  \App\MataUang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $mata_uang = MataUang::whereId($id)->get()->last();
+        $mata_uang = MataUang::where("kode", $kode)->get()->last();
         return view("mata_uang.edit", compact("mata_uang"));
     }
 
@@ -70,9 +70,9 @@ class MataUangController extends Controller
      * @param  \App\MataUang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        MataUang::whereId($id)->update($request->except(["_token", "_method"]));
+        MataUang::where("kode", $kode)->where("tgl", $request->tgl)->update($request->except(["_token", "_method"]));
         return redirect()->route("mata_uang.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class MataUangController extends Controller
      * @param  \App\MataUang  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        MataUang::whereId($id)->delete();
+        MataUang::where("kode", $kode)->delete();
         return redirect()->route("mata_uang.index")->with("success", "Data berhasil dihapus");
     }
 }

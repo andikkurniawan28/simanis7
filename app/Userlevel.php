@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RekeningInduk extends Model
+class Userlevel extends Model
 {
-    protected $table = "rekmain";
+    protected $table = "userlevel";
     protected $primaryKey = "kode";
     protected $guarded = [];
     public $timestamps = false;

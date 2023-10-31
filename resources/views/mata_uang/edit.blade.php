@@ -9,7 +9,7 @@
 @endsection
 
 @section("form-create")
-    <form action="{{ route("mata_uang.update", $mata_uang->id) }}" method="POST">
+    <form action="{{ route("mata_uang.update", $mata_uang->kode) }}" method="POST">
         @csrf @method("PUT")
 
         <div class="d-flex flex-column mb-7 fv-row">

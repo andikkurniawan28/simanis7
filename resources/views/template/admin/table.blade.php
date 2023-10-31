@@ -35,7 +35,8 @@
             <div class="card">
                 <div class="card-header border-0 pt-6">
                     <div class="card-title">
-                        <a href="@yield("form-create")" type="button" class="btn btn-primary btn-sm">Tambah @yield("title") <i class="fas fa-plus"></i></a>
+                        <a href="@yield("form-create")" type="button" class="btn btn-primary btn-sm">Tambah <i class="fas fa-plus"></i></a>
+                        @yield("toolbar")
                     </div>
                 </div>
                 <div class="card-body pt-0">

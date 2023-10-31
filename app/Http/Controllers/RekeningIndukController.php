@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\RekeningInduk;
 use Illuminate\Http\Request;
+use App\RekeningBalanceIncome;
 
 class RekeningIndukController extends Controller
 {
@@ -14,7 +15,7 @@ class RekeningIndukController extends Controller
      */
     public function index()
     {
-        $rekening_induks = RekeningInduk::all();
+        $rekening_induks = RekeningInduk::orderBy("kode", "asc")->get();
         return view("rekening_induk.index", compact("rekening_induks"));
     }
 
@@ -25,7 +26,10 @@ class RekeningIndukController extends Controller
      */
     public function create()
     {
-        return view("rekening_induk.create");
+        $rekening_balance_incomes = RekeningBalanceIncome::all();
+        return view("rekening_induk.create", compact(
+            "rekening_balance_incomes",
+        ));
     }
 
     /**
@@ -57,10 +61,11 @@ class RekeningIndukController extends Controller
      * @param  \App\RekeningInduk  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $rekening_induk = RekeningInduk::whereId($id)->get()->last();
-        return view("rekening_induk.edit", compact("rekening_induk"));
+        $rekening_induk = RekeningInduk::where("kode", $kode)->get()->last();
+        $rekening_balance_incomes = RekeningBalanceIncome::all();
+        return view("rekening_induk.edit", compact("rekening_induk", "rekening_balance_incomes"));
     }
 
     /**
@@ -70,9 +75,9 @@ class RekeningIndukController extends Controller
      * @param  \App\RekeningInduk  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        RekeningInduk::whereId($id)->update($request->except(["_token", "_method"]));
+        RekeningInduk::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("rekening_induk.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +87,9 @@ class RekeningIndukController extends Controller
      * @param  \App\RekeningInduk  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        RekeningInduk::whereId($id)->delete();
+        RekeningInduk::where("kode", $kode)->delete();
         return redirect()->route("rekening_induk.index")->with("success", "Data berhasil dihapus");
     }
 }

@@ -14,7 +14,7 @@ class RekeningBalanceIncomeController extends Controller
      */
     public function index()
     {
-        $rekening_balance_incomes = RekeningBalanceIncome::all();
+        $rekening_balance_incomes = RekeningBalanceIncome::orderBy("kode", "asc")->get();
         return view("rekening_balance_income.index", compact("rekening_balance_incomes"));
     }
 
@@ -57,9 +57,9 @@ class RekeningBalanceIncomeController extends Controller
      * @param  \App\RekeningBalanceIncome  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $rekening_balance_income = RekeningBalanceIncome::whereId($id)->get()->last();
+        $rekening_balance_income = RekeningBalanceIncome::where("kode", $kode)->get()->last();
         return view("rekening_balance_income.edit", compact("rekening_balance_income"));
     }
 
@@ -70,9 +70,9 @@ class RekeningBalanceIncomeController extends Controller
      * @param  \App\RekeningBalanceIncome  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        RekeningBalanceIncome::whereId($id)->update($request->except(["_token", "_method"]));
+        RekeningBalanceIncome::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("rekening_balance_income.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class RekeningBalanceIncomeController extends Controller
      * @param  \App\RekeningBalanceIncome  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        RekeningBalanceIncome::whereId($id)->delete();
+        RekeningBalanceIncome::where("kode", $kode)->delete();
         return redirect()->route("rekening_balance_income.index")->with("success", "Data berhasil dihapus");
     }
 }

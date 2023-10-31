@@ -1,67 +1,71 @@
 @extends("template.admin.edit")
 
 @section("title")
-    {{ ucfirst(str_replace("_", " ", "rekening_sub")) }}
+    {{ ucwords(str_replace("_", " ", "rekening_sub")) }}
+@endsection
+
+@section("root")
+    {{ route("rekening_sub.index") }}
 @endsection
 
 @section("form-create")
-    <form action="{{ route("rekening_sub.update", $rekening_sub->id) }}" method="POST">
+    <form action="{{ route("rekening_sub.update", $rekening_sub->kode) }}" method="POST">
         @csrf @method("PUT")
 
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("kode") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="{{ $rekening_sub->kode }}" required/>
+        <div class="row">
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="required">{{ ucwords("kode") }}</span>
+                    </label>
+                    <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="{{ $rekening_sub->kode }}" required/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords("rekening balance income") }}</span>
+                    </label>
+                    <select name="rekbi" class="form-control">
+                        <option disabled selected value> -- select an option -- </option>
+                        @foreach ($rekening_balance_incomes as $rekening_balance_income)
+                            <option value="{{ $rekening_balance_income->kode }}"
+                                @if($rekening_sub->rekbi == $rekening_balance_income->kode)
+                                    {{ "selected" }}
+                                @endif
+                                >{{ $rekening_balance_income->nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         </div>
 
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("nama") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="nama" value="{{ $rekening_sub->nama }}" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("dk") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="dk" value="{{ $rekening_sub->dk }}" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("kelas") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="kelas" value="{{ $rekening_sub->kelas }}" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("balinc") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="balinc" value="{{ $rekening_sub->balinc }}" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("urutfbi") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="urutfbi" value="{{ $rekening_sub->urutfbi }}" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("urutkbi") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="urutkbi" value="{{ $rekening_sub->urutkbi }}" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("klpbi") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="klpbi" value="{{ $rekening_sub->klpbi }}" required/>
+        <div class="row">
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="required">{{ ucwords("nama") }}</span>
+                    </label>
+                    <input type="text" class="form-control form-control-solid" placeholder="" name="nama" value="{{ $rekening_sub->nama }}"/ required>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords("rekening induk") }}</span>
+                    </label>
+                    <select name="mainkode" class="form-control">
+                        <option disabled selected value> -- select an option -- </option>
+                        @foreach ($rekening_induks as $rekening_induk)
+                            <option value="{{ $rekening_induk->kode }}"
+                                @if($rekening_sub->mainkode == $rekening_induk->kode)
+                                    {{ "selected" }}
+                                @endif
+                                >{{ $rekening_induk->nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div class="text-center pt-0">

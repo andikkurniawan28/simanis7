@@ -14,7 +14,7 @@ class KasBankController extends Controller
      */
     public function index()
     {
-        $kas_banks = KasBank::all();
+        $kas_banks = KasBank::orderBy("kode", "asc")->get();
         return view("kas_bank.index", compact("kas_banks"));
     }
 
@@ -57,9 +57,9 @@ class KasBankController extends Controller
      * @param  \App\KasBank  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kode)
     {
-        $kas_bank = KasBank::whereId($id)->get()->last();
+        $kas_bank = KasBank::where("kode", $kode)->get()->last();
         return view("kas_bank.edit", compact("kas_bank"));
     }
 
@@ -70,9 +70,9 @@ class KasBankController extends Controller
      * @param  \App\KasBank  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode)
     {
-        KasBank::whereId($id)->update($request->except(["_token", "_method"]));
+        KasBank::where("kode", $kode)->update($request->except(["_token", "_method"]));
         return redirect()->route("kas_bank.index")->with("success", "Data berhasil diupdate");
     }
 
@@ -82,9 +82,9 @@ class KasBankController extends Controller
      * @param  \App\KasBank  $mataUang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kode)
     {
-        KasBank::whereId($id)->delete();
+        KasBank::where("kode", $kode)->delete();
         return redirect()->route("kas_bank.index")->with("success", "Data berhasil dihapus");
     }
 }

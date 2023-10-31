@@ -1,11 +1,31 @@
 @extends("template.admin.index")
 
 @section("title")
-    {{ ucwords(str_replace("_", " ", "supplier")) }}
+    @if($status == "Y")
+        @php $state = ucwords(str_replace("_", " ", "aktif")) @endphp
+    @elseif($status == "T")
+        @php $state = ucwords(str_replace("_", " ", "tidak_aktif")) @endphp
+    @else
+        @php $state = ucwords(str_replace("_", " ", "null")) @endphp
+    @endif
+    {{ ucwords(str_replace("_", " ", "supplier_{$state}")) }}
 @endsection
 
 @section("form-create")
     {{ route("supplier.create") }}
+@endsection
+
+@section("toolbar")
+    <div class="dropdown">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-cog"></i> {{ ucwords("supplier") }} {{ $state }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{ route("supplier_aktif", "Y") }}">{{ ucwords(str_replace("_", " ", "aktif")) }}</a></li>
+            <li><a class="dropdown-item" href="{{ route("supplier_aktif", "T") }}">{{ ucwords(str_replace("_", " ", "tidak_aktif")) }}</a></li>
+            <li><a class="dropdown-item" href="{{ route("supplier_aktif") }}">{{ ucwords(str_replace("_", " ", "null")) }}</a></li>
+        </ul>
+    </div>
 @endsection
 
 @section("table")
@@ -14,12 +34,12 @@
             <tr>
                 <th>{{ ucwords(str_replace("_", " ", "no")) }}</th>
                 <th>{{ ucwords(str_replace("_", " ", "kode")) }}</th>
-                <th>{{ ucwords(str_replace("_", " ", "keterangan")) }}</th>
+                <th>{{ ucwords(str_replace("_", " ", "usaha")) }}</th>
                 <th>{{ ucwords(str_replace("_", " ", "nama")) }}</th>
-                <th>{{ ucwords(str_replace("_", " ", "alamat_kantor")) }}</th>
-                <th>{{ ucwords(str_replace("_", " ", "alamat_pabrik")) }}</th>
-                <th>{{ ucwords(str_replace("_", " ", "no_telp")) }}</th>
-                <th>{{ ucwords(str_replace("_", " ", "no_fax")) }}</th>
+                <th>{{ ucwords(str_replace("_", " ", "kantor")) }}</th>
+                <th>{{ ucwords(str_replace("_", " ", "pabrik")) }}</th>
+                <th>{{ ucwords(str_replace("_", " ", "telp")) }}</th>
+                <th>{{ ucwords(str_replace("_", " ", "fax")) }}</th>
                 <th>{{ ucwords("kota") }}</th>
                 <th>{{ ucwords("nmkota") }}</th>
                 <th>{{ ucwords("kodepos") }}</th>
@@ -49,26 +69,26 @@
         <tbody>
         @foreach ($suppliers as $supplier)
             <tr class="text-center">
-                <td>{{ $supplier->id }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $supplier->kode }}</td>
                 <td>{{ $supplier->keterangan }}</td>
                 <td>{{ $supplier->nama }}</td>
-                <td>{{ $supplier->alamat1 }}</td>
+                <td>{{ $supplier->alamat }}</td>
                 <td>{{ $supplier->alamat2 }}</td>
                 <td>{{ $supplier->telp }}</td>
                 <td>{{ $supplier->fax }}</td>
                 <td>{{ $supplier->kota }}</td>
                 <td>{{ $supplier->nmkota }}</td>
                 <td>{{ $supplier->kodepos }}</td>
-                <td>{{ $supplier->golongan->kode }}</td>
+                <td>{{ $supplier->golongan }}</td>
                 <td>{{ $supplier->disc1 }}</td>
                 <td>{{ $supplier->disc2 }}</td>
                 <td>{{ $supplier->plafon }}</td>
                 <td>{{ $supplier->khusus }}</td>
                 <td>{{ $supplier->ekspedisi }}</td>
                 <td>{{ $supplier->status }}</td>
-                <td>{{ $supplier->termin->kode }}</td>
-                <td>{{ $supplier->mata_uang->kurs }}</td>
+                <td>{{ $supplier->termin }}</td>
+                <td>{{ $supplier->uang }}</td>
                 <td>{{ $supplier->person }}</td>
                 <td>{{ $supplier->hp }}</td>
                 <td>{{ $supplier->ptelp }}</td>

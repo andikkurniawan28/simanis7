@@ -18,8 +18,7 @@ class StockController extends Controller
      */
     public function index()
     {
-        $stocks = Stock::orderBy("kode", "asc")->get();
-        return view("stock.index", compact("stocks"));
+        return redirect()->route("stock_aktif", "Y");
     }
 
     /**

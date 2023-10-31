@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Usaha;
+use App\Termin;
+use App\Wilayah;
 use App\Supplier;
 use Illuminate\Http\Request;
 
@@ -14,8 +17,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $suppliers = Supplier::orderBy("kode", "asc")->get();
-        return view("supplier.index", compact("suppliers"));
+        return redirect()->route("supplier_aktif", "Y");
     }
 
     /**
@@ -25,7 +27,14 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        return view("supplier.create");
+        $wilayahs = Wilayah::all();
+        $usahas = Usaha::all();
+        $termins = Termin::all();
+        return view("supplier.create", compact(
+            "wilayahs",
+            "usahas",
+            "termins",
+        ));
     }
 
     /**
@@ -60,7 +69,15 @@ class SupplierController extends Controller
     public function edit($kode)
     {
         $supplier = Supplier::where("kode", $kode)->get()->last();
-        return view("supplier.edit", compact("supplier"));
+        $wilayahs = Wilayah::all();
+        $usahas = Usaha::all();
+        $termins = Termin::all();
+        return view("supplier.edit", compact(
+            "supplier",
+            "wilayahs",
+            "usahas",
+            "termins",
+        ));
     }
 
     /**

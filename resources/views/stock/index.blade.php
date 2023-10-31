@@ -1,11 +1,31 @@
 @extends("template.admin.index")
 
 @section("title")
-    {{ ucwords(str_replace("_", " ", "stock")) }}
+    @if($status == "Y")
+        @php $state = ucwords(str_replace("_", " ", "aktif")) @endphp
+    @elseif($status == "T")
+        @php $state = ucwords(str_replace("_", " ", "tidak_aktif")) @endphp
+    @else
+        @php $state = ucwords(str_replace("_", " ", "null")) @endphp
+    @endif
+    {{ ucwords(str_replace("_", " ", "stock_{$state}")) }}
 @endsection
 
 @section("form-create")
     {{ route("stock.create") }}
+@endsection
+
+@section("toolbar")
+    <div class="dropdown">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-cog"></i> {{ ucwords("stock") }} {{ $state }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{ route("stock_aktif", "Y") }}">{{ ucwords(str_replace("_", " ", "aktif")) }}</a></li>
+            <li><a class="dropdown-item" href="{{ route("stock_aktif", "T") }}">{{ ucwords(str_replace("_", " ", "tidak_aktif")) }}</a></li>
+            <li><a class="dropdown-item" href="{{ route("stock_aktif") }}">{{ ucwords(str_replace("_", " ", "null")) }}</a></li>
+        </ul>
+    </div>
 @endsection
 
 @section("table")
@@ -17,7 +37,7 @@
                 <th>{{ ucwords("barcode") }}</th>
                 <th>{{ ucwords("nama") }}</th>
                 <th>{{ ucwords("golongan") }}</th>
-                <th>{{ ucwords("sub golongan") }}</th>
+                <th>{{ ucwords("subgolongan") }}</th>
                 <th>{{ ucwords("satuan") }}</th>
                 <th>{{ ucwords("tindakan") }}</th>
             </tr>

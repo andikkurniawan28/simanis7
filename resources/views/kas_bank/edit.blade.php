@@ -1,32 +1,36 @@
 @extends("template.admin.edit")
 
 @section("title")
-    {{ ucfirst(str_replace("_", " ", "Kas/Bank")) }}
+    {{ ucwords(str_replace("_", " ", "kas_bank")) }}
+@endsection
+
+@section("root")
+    {{ route("kas_bank.index") }}
 @endsection
 
 @section("form-create")
-    <form action="{{ route("kas_bank.update", $kas_bank->id) }}" method="POST">
+    <form action="{{ route("kas_bank.update", $kas_bank->kode) }}" method="POST">
         @csrf @method("PUT")
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("keterangan") }}</span>
-            </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="{{ $kas_bank->keterangan }}" required/>
-        </div>
-
-        <div class="d-flex flex-column mb-7 fv-row">
-            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("kode") }}</span>
+                <span class="required">{{ ucwords("kode") }}</span>
             </label>
             <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="{{ $kas_bank->kode }}" required/>
         </div>
 
         <div class="d-flex flex-column mb-7 fv-row">
             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                <span class="required">{{ ucfirst("rekening") }}</span>
+                <span class="">{{ ucwords("keterangan") }}</span>
             </label>
-            <input type="text" class="form-control form-control-solid" placeholder="" name="rekening" value="{{ $kas_bank->rekening }}" required/>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="keterangan" value="{{ $kas_bank->keterangan }}" />
+        </div>
+
+        <div class="d-flex flex-column mb-7 fv-row">
+            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                <span class="">{{ ucwords("rekening") }}</span>
+            </label>
+            <input type="text" class="form-control form-control-solid" placeholder="" name="rekening" value="{{ $kas_bank->rekening }}"/>
         </div>
 
         <div class="text-center pt-0">
