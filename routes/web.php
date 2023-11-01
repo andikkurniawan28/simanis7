@@ -13,11 +13,14 @@ use App\Http\Controllers\GolonganController;
 use App\Http\Controllers\MataUangController;
 use App\Http\Controllers\SalesmanController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\RekeningSubController;
 use App\Http\Controllers\SubGolonganController;
 use App\Http\Controllers\CustomerAktifController;
 use App\Http\Controllers\RekeningIndukController;
 use App\Http\Controllers\SupplierAktifController;
+use App\Http\Controllers\OrderPembelianController;
+use App\Http\Controllers\ReturPembelianController;
 use App\Http\Controllers\RekeningAkuntansiController;
 use App\Http\Controllers\RekeningBalanceIncomeController;
 
@@ -67,3 +70,7 @@ Route::get("suppliers/{status?}", "SupplierAktifController")->name("supplier_akt
 Route::get("customers/{status?}", "CustomerAktifController")->name("customer_aktif");
 
 Route::resource("user", "UserController");
+
+Route::resource('order_pembelian', "OrderPembelianController");
+Route::resource('pembelian', "PembelianController");
+Route::resource('retur_pembelian', "ReturPembelianController");
