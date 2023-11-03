@@ -10,7 +10,6 @@
 
 @section("form-create")
     <h4>{{ ucwords(str_replace("_", " ", "data_order")) }}</h4>
-
     <form action="{{ route("order_pembelian.store") }}" method="POST">
         @csrf @method("POST")
 
@@ -42,7 +41,7 @@
                     <select name="kodesc" class="form-control">
                         <option disabled selected value> -- select an option -- </option>
                         @foreach ($suppliers as $supplier)
-                            <option value="{{ $supplier->kode }}">{{ $supplier->kode }} | {{ $supplier->keterangan }}</option>
+                            <option value="{{ $supplier->kode }}">{{ $supplier->kode }} | {{ $supplier->nama }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -118,11 +117,15 @@
 
         <div class="text-center pt-0">
             <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">
-                <span class="indicator-label">Lanjut Tambah Barang <i class="fa fa-arrow-right"></i></span>
+                <span class="indicator-label">Simpan</span>
                 <span class="indicator-progress">Please wait...
                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
             </button>
         </div>
 
     </form>
+@endsection
+
+@section("transaksi")
+    {{ "active show" }}
 @endsection

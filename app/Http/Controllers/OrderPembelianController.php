@@ -18,7 +18,15 @@ class OrderPembelianController extends Controller
     public function index()
     {
         $order_pembelians = OrderPembelian::orderBy("tgl", "desc")->get();
-        return view("order_pembelian.index", compact("order_pembelians"));
+        $suppliers = Supplier::select(["kode", "nama"])->get();
+        $termins = Termin::select(["kode", "keterangan"])->get();
+        $faktur = self::generateFaktur();
+        return view("order_pembelian.index", compact(
+            "order_pembelians",
+            "suppliers",
+            "termins",
+            "faktur",
+        ));
     }
 
     /**
@@ -28,14 +36,12 @@ class OrderPembelianController extends Controller
      */
     public function create()
     {
-        $suppliers = Supplier::all();
-        $termins = Termin::all();
-        $stocks = Stock::where("status", "Y")->orderBy("kode", "asc")->get();
+        $suppliers = Supplier::select(["kode", "nama"])->get();
+        $termins = Termin::select(["kode", "keterangan"])->get();
         $faktur = self::generateFaktur();
         return view("order_pembelian.create", compact(
             "suppliers",
             "termins",
-            "stocks",
             "faktur",
         ));
     }
@@ -72,7 +78,13 @@ class OrderPembelianController extends Controller
     public function edit($faktur)
     {
         $order_pembelian = OrderPembelian::where("faktur", $faktur)->get()->last();
-        return view("order_pembelian.edit", compact("order_pembelian"));
+        $suppliers = Supplier::select(["kode", "nama"])->get();
+        $termins = Termin::select(["kode", "keterangan"])->get();
+        return view("order_pembelian.edit", compact(
+            "order_pembelian",
+            "suppliers",
+            "termins",
+        ));
     }
 
     /**

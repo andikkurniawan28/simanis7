@@ -8,7 +8,7 @@
 				<div class="tab-content">
 
 					<!--begin::Tab pane master-->
-                    <div class="tab-pane fade active show" id="master" role="tabpanel">
+                    <div class="tab-pane fade @yield('master')" id="master" role="tabpanel">
 
                         <!--begin::Menu-->
                         <div class="menu menu-column menu-fit menu-rounded menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5 px-6 my-5 my-lg-0" id="master" data-kt-menu="true">
@@ -92,7 +92,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                    {{-- <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
                                             <a class="menu-link" href="{{ route("satuan.index") }}">
                                                 <span class="menu-bullet">
@@ -101,7 +101,7 @@
                                                 <span class="menu-title">{{ ucwords("satuan") }}</span>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
@@ -281,7 +281,7 @@
                     <!--end::Tab pane master-->
 
 					<!--begin::Tab pane transaksi-->
-                    <div class="tab-pane fade" id="transaksi" role="tabpanel">
+                    <div class="tab-pane fade @yield('transaksi')" id="transaksi" role="tabpanel">
 
                         <!--begin::Menu-->
                         <div class="menu menu-column menu-fit menu-rounded menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5 px-6 my-5 my-lg-0" id="transaksi" data-kt-menu="true">
@@ -320,7 +320,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                    {{-- <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
                                             <a class="menu-link" href="{{ route("pembelian.index") }}">
                                                 <span class="menu-bullet">
@@ -344,7 +344,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("nota_tambah_kurang_pembelian.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -355,20 +355,20 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("titipan_pembelian.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
                                                 <span class="menu-title">{{ ucwords(str_replace("_", " ", "titipan")) }}</span>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                 </div>
 
                                 {{-- Pelunasan Hutang --}}
-                                <div class="menu-item">
-                                    <a class="menu-link" href="">
+                                {{-- <div class="menu-item">
+                                    <a class="menu-link" href="{{ route("hutang.index") }}">
                                         <span class="menu-icon">
                                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                                             <span class="svg-icon svg-icon-2">
@@ -378,7 +378,7 @@
                                         </span>
                                         <span class="menu-title">{{ ucwords(str_replace("_", " ", "pelunasan_hutang")) }}</span>
                                     </a>
-                                </div>
+                                </div> --}}
 
                                 {{-- Penjualan --}}
                                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -398,7 +398,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("order_penjualan.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -407,9 +407,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                    {{-- <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("penawaran.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -420,7 +420,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("penjualan.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -431,7 +431,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("retur_penjualan.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -442,7 +442,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("nota_tambah_kurang_penjualan.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -453,19 +453,19 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("titipan_penjualan.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
                                                 <span class="menu-title">{{ ucwords(str_replace("_", " ", "titipan")) }}</span>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                 </div>
 
                                 {{-- Pelunasan Piutang --}}
-                                <div class="menu-item">
+                                {{-- <div class="menu-item">
                                     <a class="menu-link" href="">
                                         <span class="menu-icon">
                                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
@@ -476,10 +476,10 @@
                                         </span>
                                         <span class="menu-title">{{ ucwords(str_replace("_", " ", "pelunasan_piutang")) }}</span>
                                     </a>
-                                </div>
+                                </div> --}}
 
                                 {{-- Mutasi Barang --}}
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                     <span class="menu-link">
 
                                     <span class="menu-icon">
@@ -496,7 +496,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("mutasi_barang_antar_gudang.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -507,7 +507,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("mutasi_pot.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -516,10 +516,10 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> --}}
 
                                 {{-- Penyesuaian Barang --}}
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                     <span class="menu-link">
 
                                     <span class="menu-icon">
@@ -536,7 +536,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("barang_mati.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -547,7 +547,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("barang_rusak.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -558,7 +558,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("barang_repotting.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -569,7 +569,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("barang_hilang.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -578,11 +578,11 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> --}}
 
                                 {{-- Pemakaian Barang --}}
-                                <div class="menu-item">
-                                    <a class="menu-link" href="">
+                                {{-- <div class="menu-item">
+                                    <a class="menu-link" href="{{ route("pemakaian_barang.index") }}">
                                         <span class="menu-icon">
                                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                                             <span class="svg-icon svg-icon-2">
@@ -592,10 +592,10 @@
                                         </span>
                                         <span class="menu-title">{{ ucwords(str_replace("_", " ", "pemakaian_barang")) }}</span>
                                     </a>
-                                </div>
+                                </div> --}}
 
                                 {{-- Akuntansi --}}
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                     <span class="menu-link">
 
                                     <span class="menu-icon">
@@ -612,7 +612,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("bukti_kas_masuk.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -623,7 +623,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("bukti_kas_keluar.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -634,7 +634,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("bukti_bank_masuk.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -645,7 +645,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("bukti_bank_keluar.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -656,7 +656,7 @@
 
                                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                                         <div class="menu-item">
-                                            <a class="menu-link" href="">
+                                            <a class="menu-link" href="{{ route("jurnal_umum.index") }}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -665,7 +665,7 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> --}}
 
                             </div>
                         </div>
@@ -674,8 +674,8 @@
                     </div>
                     <!--end::Tab pane transaksi-->
 
-                    <!--begin::Tab pane laporan-->
-                    <div class="tab-pane fade" id="laporan" role="tabpanel">
+                    {{-- <!--begin::Tab pane laporan-->
+                    <div class="tab-pane fade @yield('laporan')" id="laporan" role="tabpanel">
 
                         <!--begin::Menu-->
                         <div class="menu menu-column menu-fit menu-rounded menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5 px-6 my-5 my-lg-0" id="laporan" data-kt-menu="true">
@@ -687,7 +687,6 @@
                                     </div>
                                 </div>
 
-                                {{-- sekilas_bisnis --}}
                                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                     <span class="menu-link">
 
@@ -738,7 +737,6 @@
 
                                 </div>
 
-                                {{-- penjualan --}}
                                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                     <span class="menu-link">
 
@@ -833,7 +831,6 @@
 
                                 </div>
 
-                                {{-- pembelian --}}
                                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                     <span class="menu-link">
 
@@ -928,7 +925,6 @@
 
                                 </div>
 
-                                {{-- produk --}}
                                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                     <span class="menu-link">
 
@@ -1045,7 +1041,6 @@
 
                                 </div>
 
-                                {{-- keuangan --}}
                                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                     <span class="menu-link">
 
@@ -1165,10 +1160,10 @@
                             </div>
                         </div>
                     </div>
-                    <!--end::Tab pane laporan-->
+                    <!--end::Tab pane laporan--> --}}
 
                     <!--begin::Tab pane supervisor-->
-                    <div class="tab-pane fade" id="supervisor" role="tabpanel">
+                    <div class="tab-pane fade @yield('supervisor')" id="supervisor" role="tabpanel">
 
                         <!--begin::Menu-->
                         <div class="menu menu-column menu-fit menu-rounded menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5 px-6 my-5 my-lg-0" id="supervisor" data-kt-menu="true">
@@ -1198,8 +1193,8 @@
                     </div>
                     <!--end::Tab pane supervisor-->
 
-                    <!--begin::Tab pane setting-->
-                    <div class="tab-pane fade" id="setting" role="tabpanel">
+                    {{-- <!--begin::Tab pane setting-->
+                    <div class="tab-pane fade @yield('setting')" id="setting" role="tabpanel">
 
                         <!--begin::Menu-->
                         <div class="menu menu-column menu-fit menu-rounded menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5 px-6 my-5 my-lg-0" id="setting" data-kt-menu="true">
@@ -1293,7 +1288,7 @@
                         </div>
 
                     </div>
-                    <!--end::Tab pane setting-->
+                    <!--end::Tab pane setting--> --}}
 
 				</div>
 				<!--end::Tab content-->

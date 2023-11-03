@@ -19,7 +19,8 @@ class UserController extends Controller
             ->select("username.*", "userlevel.keterangan as level")
             ->orderBy("username.username", "asc")
             ->get();
-        return view("user.index", compact("users"));
+        $userlevels = Userlevel::all();
+        return view("user.index", compact("users", "userlevels"));
     }
 
     /**
@@ -41,6 +42,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->request->add(["password" => bcrypt($request->password)]);
         User::create($request->all());
         return redirect()->route("user.index")->with("success", "Data berhasil disimpan");
     }

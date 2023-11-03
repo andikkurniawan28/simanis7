@@ -5,68 +5,308 @@
 @endsection
 
 @section("form-create")
-    {{ route("rekening_akuntansi.create") }}
+    <form action="{{ route("rekening_akuntansi.store") }}" method="POST">
+        @csrf @method("POST")
+
+        <div class="row">
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="required">{{ ucwords("kode") }}</span>
+                    </label>
+                    <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="" required/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="required">{{ ucwords("nama") }}</span>
+                    </label>
+                    <input type="text" class="form-control form-control-solid" placeholder="" name="nama" value=""/ required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords(str_replace("_", " ", "rek_bi")) }}</span>
+                    </label>
+                    <select name="rekbi" class="form-control">
+                        <option disabled selected value> -- select an option -- </option>
+                        @foreach ($rekening_balance_incomes as $rekening_balance_income)
+                            <option value="{{ $rekening_balance_income->kode }}">{{ $rekening_balance_income->nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords(str_replace("_", " ", "rek_induk")) }}</span>
+                    </label>
+                    <select name="mainkode" class="form-control">
+                        <option disabled selected value> -- select an option -- </option>
+                        @foreach ($rekening_induks as $rekening_induk)
+                            <option value="{{ $rekening_induk->kode }}">{{ $rekening_induk->nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords("rekening sub") }}</span>
+                    </label>
+                    <select name="subkode" class="form-control">
+                        <option disabled selected value> -- select an option -- </option>
+                        @foreach ($rekening_subs as $rekening_sub)
+                            <option value="{{ $rekening_sub->kode }}">{{ $rekening_sub->nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center pt-0">
+            <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">
+                <span class="indicator-label">Simpan</span>
+                <span class="indicator-progress">Please wait...
+                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+        </div>
+
+    </form>
 @endsection
 
 @section("table")
-    <table class="table table-hover text-center" id="example">
+    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" id="example">
         <thead>
-            <tr>
+            <tr class="fw-bolder text-muted">
                 <th>{{ ucwords("no") }}</th>
+                <th>{{ ucwords("tindakan") }}</th>
                 <th>{{ ucwords("kode") }}</th>
                 <th>{{ ucwords("nama") }}</th>
-                <th>{{ ucwords("rekening induk") }}</th>
-                <th>{{ ucwords("rekening sub") }}</th>
-                <th>{{ ucwords("rekening BI") }}</th>
-                <th>{{ ucwords("tindakan") }}</th>
-                {{-- <th>{{ ucwords("debit / kredit") }}</th>
-                <th>{{ ucwords("balance / income") }}</th>
-                <th>{{ ucwords("urutan FBI") }}</th>
-                <th>{{ ucwords("urutan KBI") }}</th>
-                <th>{{ ucwords("kelompok BI") }}</th> --}}
+                <th>{{ ucwords(str_replace("_", " ", "rek_induk")) }}</th>
+                <th>{{ ucwords(str_replace("_", " ", "rek_sub")) }}</th>
+                <th>{{ ucwords(str_replace("_", " ", "rek_bi")) }}</th>
             </tr>
         </thead>
         <tbody>
         @foreach ($rekening_akuntansis as $rekening_akuntansi)
-            <tr class="text-center">
+            <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $rekening_akuntansi->kode }}</td>
-                <td>{{ $rekening_akuntansi->nama }}</td>
-                <td>{{ $rekening_akuntansi->mainkode }}</td>
-                <td>{{ $rekening_akuntansi->subkode }}</td>
-                <td>{{ $rekening_akuntansi->rekbi }}</td>
-                {{-- <td>{{ $rekening_akuntansi->dk }}</td>
-                <td>{{ $rekening_akuntansi->balinc }}</td>
-                <td>{{ $rekening_akuntansi->urutfbi }}</td>
-                <td>{{ $rekening_akuntansi->urutkbi }}</td>
-                <td>{{ $rekening_akuntansi->klpbi }}</td> --}}
                 <td>
-                    <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">{{ ucwords("tindakan") }}
-                        <span class="svg-icon svg-icon-5 m-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-                            </svg>
-                        </span>
-                    </a>
-                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                        <div class="menu-item px-3">
-                            <a href="{{ route("rekening_akuntansi.edit", $rekening_akuntansi->kode) }}" class="menu-link px-3">{{ ucwords("edit") }}</a>
-                        </div>
-                        <div class="menu-item px-3">
-                            <form action="{{ route("rekening_akuntansi.destroy", $rekening_akuntansi->kode) }}" method="POST" id="form-delete{{ $rekening_akuntansi->kode }}">
-                                @csrf @method("DELETE")
-                                <a class="menu-link px-3" onclick="submitForm{{ $rekening_akuntansi->kode }}()">{{ ucwords("hapus") }}</a>
-                                <script>
-                                    function submitForm{{ $rekening_akuntansi->kode }}() {
-                                        document.getElementById("form-delete{{ $rekening_akuntansi->kode }}").submit();
-                                    }
-                                </script>
-                            </form>
-                        </div>
+                    <div class="d-flex center-content-end flex-shrink-0">
+                        <button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#show{{ $loop->iteration }}">
+                            <span class="svg-icon svg-icon-3">
+                                <i class="fas fa-info"></i>
+                            </span>
+                        </button>
+                        <button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#edit{{ $loop->iteration }}">
+                            <span class="svg-icon svg-icon-3">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                        </button>
+                        <button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#delete{{ $loop->iteration }}">
+                            <span class="svg-icon svg-icon-3">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                        </button>
                     </div>
                 </td>
+                <td>{{ $rekening_akuntansi->kode }}</td>
+                <td>{{ $rekening_akuntansi->nama }}</td>
+                <td>{{ $rekening_akuntansi->nama_rekening_induk }}</td>
+                <td>{{ $rekening_akuntansi->nama_rekening_sub }}</td>
+                <td>{{ $rekening_akuntansi->nama_rekening_balance_income }}</td>
             </tr>
+            <div class="modal fade" id="show{{ $loop->iteration }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog mw-650px">
+                    <div class="modal-content">
+                        <div class="modal-header pb-0 border-0 justify-content-end">
+                            <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                <span class="svg-icon svg-icon-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                        <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="modal-body scroll-y mx-5 mx-xl-18 pt-0 pb-15">
+                            <div class="text-center mb-13">
+                                <h1 class="mb-3">Detail @yield("title")</h1>
+                            </div>
+                            <div class="mb-10">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        {{ ucwords(str_replace("_", " ", "kode")) }} : {{ $rekening_akuntansi->kode }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        {{ ucwords(str_replace("_", " ", "nama")) }} : {{ $rekening_akuntansi->nama }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        {{ ucwords(str_replace("_", " ", "rek_bi")) }} : {{ $rekening_akuntansi->nama_rekening_balance_income }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        {{ ucwords(str_replace("_", " ", "rek_induk")) }} : {{ $rekening_akuntansi->nama_rekening_induk }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        {{ ucwords(str_replace("_", " ", "rek_sub")) }} : {{ $rekening_akuntansi->nama_rekening_sub }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="edit{{ $loop->iteration }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog mw-650px">
+                    <div class="modal-content">
+                        <div class="modal-header pb-0 border-0 justify-content-end">
+                            <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                <span class="svg-icon svg-icon-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                        <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="modal-body scroll-y mx-5 mx-xl-18 pt-0 pb-15">
+                            <div class="text-center mb-13">
+                                <h1 class="mb-3">Edit @yield("title")</h1>
+                            </div>
+                            <div class="mb-10">
+                                <form action="{{ route("rekening_akuntansi.update", $rekening_akuntansi->kode) }}" method="POST">
+                                    @csrf @method("PUT")
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="d-flex flex-column mb-7 fv-row">
+                                                <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                    <span class="required">{{ ucwords("kode") }}</span>
+                                                </label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="kode" value="{{ $rekening_akuntansi->kode }}" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="d-flex flex-column mb-7 fv-row">
+                                                <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                    <span class="required">{{ ucwords("nama") }}</span>
+                                                </label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="nama" value="{{ $rekening_akuntansi->nama }}"/ required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="d-flex flex-column mb-7 fv-row">
+                                                <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                    <span class="">{{ ucwords(str_replace("_", " ", "rek_bi")) }}</span>
+                                                </label>
+                                                <select name="rekbi" class="form-control">
+                                                    <option disabled selected value> -- select an option -- </option>
+                                                    @foreach ($rekening_balance_incomes as $rekening_balance_income)
+                                                        <option value="{{ $rekening_balance_income->kode }}"
+                                                            @if($rekening_akuntansi->rekbi == $rekening_balance_income->kode)
+                                                                {{ "selected" }}
+                                                            @endif
+                                                            >{{ $rekening_balance_income->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="d-flex flex-column mb-7 fv-row">
+                                                <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                    <span class="">{{ ucwords(str_replace("_", " ", "rek_induk")) }}</span>
+                                                </label>
+                                                <select name="mainkode" class="form-control">
+                                                    <option disabled selected value> -- select an option -- </option>
+                                                    @foreach ($rekening_induks as $rekening_induk)
+                                                        <option value="{{ $rekening_induk->kode }}"
+                                                            @if($rekening_akuntansi->mainkode == $rekening_induk->kode)
+                                                                {{ "selected" }}
+                                                            @endif
+                                                            >{{ $rekening_induk->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="d-flex flex-column mb-7 fv-row">
+                                                <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                    <span class="">{{ ucwords(str_replace("_", " ", "rek_sub")) }}</span>
+                                                </label>
+                                                <select name="subkode" class="form-control">
+                                                    <option disabled selected value> -- select an option -- </option>
+                                                    @foreach ($rekening_subs as $rekening_sub)
+                                                        <option value="{{ $rekening_sub->kode }}"
+                                                            @if($rekening_akuntansi->subkode == $rekening_sub->kode)
+                                                                {{ "selected" }}
+                                                            @endif
+                                                            >{{ $rekening_sub->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center pt-0">
+                                        <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">
+                                            <span class="indicator-label">Simpan</span>
+                                            <span class="indicator-progress">Please wait...
+                                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="delete{{ $loop->iteration }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog mw-650px">
+                    <div class="modal-content">
+                        <div class="modal-header pb-0 border-0 justify-content-end">
+                            <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                <span class="svg-icon svg-icon-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                        <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="modal-body scroll-y mx-5 mx-xl-18 pt-0 pb-15">
+                            <div class="text-center mb-13">
+                                <h1 class="mb-3">Hapus @yield("title")</h1>
+                            </div>
+                            <div class="mb-10">
+                                <p class="text-center lead">Apa Anda yakin akan menghapus record ini ?</p>
+                                <form action="{{ route("rekening_akuntansi.destroy", $rekening_akuntansi->kode) }}" method="POST">
+                                    @csrf @method("DELETE")
+                                    <div class="text-center pt-0">
+                                        <button type="submit" id="kt_modal_new_card_submit" class="btn btn-danger">Ya</button>
+                                    </form>
+                                        <button class="btn btn-dark" data-bs-dismiss="modal">Tidak</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         @endforeach
         </tbody>
     </table>
+
+@endsection
+
+@section("master")
+    {{ "active show" }}
 @endsection

@@ -72,8 +72,9 @@ class MataUangController extends Controller
      */
     public function update(Request $request, $kode)
     {
-        MataUang::where("kode", $kode)->where("tgl", $request->tgl)->update($request->except(["_token", "_method"]));
-        return redirect()->route("mata_uang.index")->with("success", "Data berhasil diupdate");
+        // return $request->all();
+        // MataUang::where("kode", $kode)->where("tgl", $request->tgl)->update($request->except(["_token", "_method"]));
+        // return redirect()->route("mata_uang.index")->with("success", "Data berhasil diupdate");
     }
 
     /**

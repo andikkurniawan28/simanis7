@@ -76,3 +76,7 @@
         </tbody>
     </table>
 @endsection
+
+@section("transaksi")
+    {{ "active show" }}
+@endsection

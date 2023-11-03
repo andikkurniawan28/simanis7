@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\RekeningAkuntansi;
+use App\RekeningSub;
 use App\RekeningInduk;
+use App\RekeningAkuntansi;
 use Illuminate\Http\Request;
 use App\RekeningBalanceIncome;
-use App\RekeningSub;
+use Illuminate\Support\Facades\DB;
 
 class RekeningAkuntansiController extends Controller
 {
@@ -17,8 +18,30 @@ class RekeningAkuntansiController extends Controller
      */
     public function index()
     {
-        $rekening_akuntansis = RekeningAkuntansi::orderBy("kode", "asc")->get();
-        return view("rekening_akuntansi.index", compact("rekening_akuntansis"));
+        $rekening_akuntansis = DB::table("rekening")
+            ->leftjoin("rekbi", "rekening.rekbi", "rekbi.kode")
+            ->leftjoin("rekmain", "rekening.mainkode", "rekmain.kode")
+            ->leftjoin("reksub", "rekening.subkode", "reksub.kode")
+            ->select([
+                "rekening.kode as kode",
+                "rekening.nama as nama",
+                "rekening.rekbi as rekbi",
+                "rekening.mainkode as mainkode",
+                "rekening.subkode as subkode",
+                "rekbi.nama as nama_rekening_balance_income",
+                "rekmain.nama as nama_rekening_induk",
+                "reksub.nama as nama_rekening_sub",
+            ])->get();
+
+        $rekening_balance_incomes = RekeningBalanceIncome::all();
+        $rekening_induks = RekeningInduk::all();
+        $rekening_subs = RekeningSub::all();
+        return view("rekening_akuntansi.index", compact(
+            "rekening_akuntansis",
+            "rekening_balance_incomes",
+            "rekening_induks",
+            "rekening_subs",
+        ));
     }
 
     /**

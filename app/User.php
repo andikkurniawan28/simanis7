@@ -11,8 +11,12 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $table = "username";
-    protected $primaryKey = "kode";
+    protected $primaryKey = "username";
     protected $guarded = [];
     public $timestamps = false;
     public $incrementing = false;
+
+    public function level(){
+        return $this->belongsTo(Userlevel::class, "menulevel", "kode");
+    }
 }

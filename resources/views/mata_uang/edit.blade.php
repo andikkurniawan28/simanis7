@@ -50,3 +50,7 @@
 
     </form>
 @endsection
+
+@section("master")
+    {{ "active show" }}
+@endsection

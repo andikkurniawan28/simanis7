@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\KasBank;
+use App\RekeningAkuntansi;
 use Illuminate\Http\Request;
 
 class KasBankController extends Controller
@@ -15,7 +16,8 @@ class KasBankController extends Controller
     public function index()
     {
         $kas_banks = KasBank::orderBy("kode", "asc")->get();
-        return view("kas_bank.index", compact("kas_banks"));
+        $rekening_akuntansis = RekeningAkuntansi::orderBy("kode", "asc")->get();
+        return view("kas_bank.index", compact("kas_banks", "rekening_akuntansis"));
     }
 
     /**

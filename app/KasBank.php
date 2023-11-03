@@ -11,4 +11,8 @@ class KasBank extends Model
     protected $guarded = [];
     public $timestamps = false;
     public $incrementing = false;
+
+    public function rekening_akuntansi(){
+        return $this->belongsTo(RekeningAkuntansi::class, "rekening", "kode");
+    }
 }

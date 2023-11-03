@@ -72,3 +72,7 @@
 
     </form>
 @endsection
+
+@section("supervisor")
+    {{ "active show" }}
+@endsection

@@ -16,7 +16,8 @@ class RekeningIndukController extends Controller
     public function index()
     {
         $rekening_induks = RekeningInduk::orderBy("kode", "asc")->get();
-        return view("rekening_induk.index", compact("rekening_induks"));
+        $rekening_balance_incomes = RekeningBalanceIncome::all();
+        return view("rekening_induk.index", compact("rekening_induks", "rekening_balance_incomes"));
     }
 
     /**

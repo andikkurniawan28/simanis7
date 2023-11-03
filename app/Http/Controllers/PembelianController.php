@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Stock;
+use App\Gudang;
+use App\OrderPembelian;
 use App\Termin;
 use App\Supplier;
 use App\Pembelian;
@@ -17,7 +19,12 @@ class PembelianController extends Controller
      */
     public function index()
     {
-        $pembelians = Pembelian::orderBy("tgl", "desc")->limit(100)->get();
+        $pembelians = Pembelian::leftjoin("termin", "totpc.termin", "termin.kode")
+            ->leftjoin("gudang", "totpc.gudang", "gudang.kode")
+            ->leftjoin("supplier", "totpc.kodesc", "supplier.kode")
+            ->select(["totpc.*", "termin.keterangan as nama_termin", "supplier.nama as nama_supplier", "gudang.keterangan as nama_gudang"])
+            ->orderBy("tgl", "desc")
+            ->get();
         return view("pembelian.index", compact("pembelians"));
     }
 
@@ -32,11 +39,15 @@ class PembelianController extends Controller
         $termins = Termin::all();
         $stocks = Stock::where("status", "Y")->orderBy("kode", "asc")->get();
         $faktur = self::generateFaktur();
+        $gudangs = Gudang::all();
+        $order_pembelians = OrderPembelian::all();
         return view("pembelian.create", compact(
             "suppliers",
             "termins",
             "stocks",
             "faktur",
+            "gudangs",
+            "order_pembelians",
         ));
     }
 
@@ -72,7 +83,19 @@ class PembelianController extends Controller
     public function edit($faktur)
     {
         $pembelian = Pembelian::where("faktur", $faktur)->get()->last();
-        return view("pembelian.edit", compact("pembelian"));
+        $suppliers = Supplier::all();
+        $termins = Termin::all();
+        $stocks = Stock::where("status", "Y")->orderBy("kode", "asc")->get();
+        $gudangs = Gudang::all();
+        $order_pembelians = OrderPembelian::all();
+        return view("pembelian.edit", compact(
+            "pembelian",
+            "suppliers",
+            "termins",
+            "stocks",
+            "gudangs",
+            "order_pembelians",
+        ));
     }
 
     /**

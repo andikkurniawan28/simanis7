@@ -36,3 +36,7 @@
 
     </form>
 @endsection
+
+@section("transaksi")
+    {{ "active show" }}
+@endsection

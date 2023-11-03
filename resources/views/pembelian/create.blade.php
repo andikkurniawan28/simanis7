@@ -9,7 +9,7 @@
 @endsection
 
 @section("form-create")
-    <h4>{{ ucwords(str_replace("_", " ", "data_order")) }}</h4>
+    <h4>{{ ucwords(str_replace("_", " ", "data_pembelian")) }}</h4>
 
     <form action="{{ route("pembelian.store") }}" method="POST">
         @csrf @method("POST")
@@ -31,6 +31,14 @@
                     <input type="date" class="form-control form-control-solid" placeholder="" name="tgl" value="{{ date("Y-m-d") }}" required/>
                 </div>
             </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="required">{{ ucwords("jatuh tempo") }}</span>
+                    </label>
+                    <input type="date" class="form-control form-control-solid" placeholder="" name="jthtmp" value="{{ date("Y-m-d") }}" required/>
+                </div>
+            </div>
         </div>
 
         <div class="row">
@@ -42,7 +50,7 @@
                     <select name="kodesc" class="form-control">
                         <option disabled selected value> -- select an option -- </option>
                         @foreach ($suppliers as $supplier)
-                            <option value="{{ $supplier->kode }}">{{ $supplier->kode }} | {{ $supplier->keterangan }}</option>
+                            <option value="{{ $supplier->kode }}">{{ $supplier->kode }} | {{ $supplier->nama }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -60,15 +68,69 @@
                     </select>
                 </div>
             </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords("faktu pajak") }}</span>
+                    </label>
+                    <input type="text" class="form-control form-control-solid" placeholder="" name="notax" value="" />
+                </div>
+            </div>
         </div>
 
         <div class="row">
             <div class="col">
                 <div class="d-flex flex-column mb-7 fv-row">
                     <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                        <span class="required">{{ ucwords(str_replace("_", " ", "jatuh_tempo")) }}</span>
+                        <span class="required">{{ ucwords("gudang") }}</span>
                     </label>
-                    <input type="date" class="form-control form-control-solid" placeholder="" name="jthtmp" value="{{ date("Y-m-d") }}" required/>
+                    <select name="gudang" class="form-control">
+                        <option disabled selected value> -- select an option -- </option>
+                        @foreach ($gudangs as $gudang)
+                            <option value="{{ $gudang->kode }}">{{ $gudang->kode }} | {{ $gudang->keterangan }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="required">{{ ucwords(str_replace("_", " ", "disc_fkt_(%)")) }}</span>
+                    </label>
+                    <input type="number" step="any" class="form-control form-control-solid" placeholder="" name="disc1" value="0" required/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="required">{{ ucwords(str_replace("_", " ", "ppn_(%)")) }}</span>
+                    </label>
+                    <input type="number" step="any" class="form-control form-control-solid" placeholder="" name="ppn" value="0" required/>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords(str_replace("_", " ", "fkt_asli")) }}</span>
+                    </label>
+                    <input type="text" step="any" class="form-control form-control-solid" placeholder="" name="asli" value=""/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column mb-7 fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                        <span class="">{{ ucwords(str_replace("_", " ", "no_PO")) }}</span>
+                    </label>
+                    <select name="nodo" class="form-control">
+                        <option disabled selected value> -- select an option -- </option>
+                        @foreach ($order_pembelians as $order_pembelian)
+                            <option value="{{ $order_pembelian->kode }}">{{ $order_pembelian->faktur }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col">
@@ -83,35 +145,12 @@
                     </select>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
             <div class="col">
                 <div class="d-flex flex-column mb-7 fv-row">
                     <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                         <span class="required">{{ ucwords(str_replace("_", " ", "kurs")) }}</span>
                     </label>
                     <input type="number" step="any" class="form-control form-control-solid" placeholder="" name="kurs" value="1" required/>
-                </div>
-            </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <div class="d-flex flex-column mb-7 fv-row">
-                            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                <span class="required">{{ ucwords(str_replace("_", " ", "disc_fkt_(%)")) }}</span>
-                            </label>
-                            <input type="number" step="any" class="form-control form-control-solid" placeholder="" name="disc1" value="0" required/>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="d-flex flex-column mb-7 fv-row">
-                            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                <span class="required">{{ ucwords(str_replace("_", " ", "ppn_(%)")) }}</span>
-                            </label>
-                            <input type="number" step="any" class="form-control form-control-solid" placeholder="" name="ppn" value="0" required/>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -125,4 +164,8 @@
         </div>
 
     </form>
+@endsection
+
+@section("transaksi")
+    {{ "active show" }}
 @endsection

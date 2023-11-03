@@ -17,7 +17,9 @@ class RekeningSubController extends Controller
     public function index()
     {
         $rekening_subs = RekeningSub::orderBy("kode", "asc")->get();
-        return view("rekening_sub.index", compact("rekening_subs"));
+        $rekening_balance_incomes = RekeningBalanceIncome::all();
+        $rekening_induks = RekeningInduk::all();
+        return view("rekening_sub.index", compact("rekening_subs", "rekening_balance_incomes", "rekening_induks"));
     }
 
     /**

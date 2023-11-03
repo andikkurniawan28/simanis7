@@ -54,3 +54,7 @@
         </tbody>
     </table>
 @endsection
+
+@section("master")
+    {{ "active show" }}
+@endsection

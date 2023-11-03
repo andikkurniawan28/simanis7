@@ -2,7 +2,7 @@
 <div class="aside-primary d-flex flex-column align-items-lg-center flex-row-auto">
     <!--begin::Logo-->
     <div class="aside-logo d-none d-lg-flex flex-column align-items-center flex-column-auto py-10" id="kt_aside_logo">
-        <a href="{{ route("home") }}">
+        <a href="{{ route("dashboard") }}">
             <img alt="Logo" src="/old/simanis.jpg" class="h-100px" />
         </a>
     </div>
@@ -14,28 +14,19 @@
             <!--begin::Nav-->
             <ul class="nav flex-column">
 
-                {{-- <!--begin::Nav item-->
-                <li class="nav-item mb-2" title="Dashboard">
+                <!--begin::Nav item-->
+                <li class="nav-item mb-2" title="{{ ucfirst("dashboard") }}">
                     <!--begin::Nav link-->
-                    <a class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light" href="{{ route("home") }}">
-                        <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-                        <span class="svg-icon svg-icon-2x">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-                                <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-                                <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-                                <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
+                    <a class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light" href="{{ route("dashboard") }}">
+                        <i class="fa fa-tachometer-alt"></i>
                     </a>
                     <!--end::Nav link-->
                 </li>
-                <!--end::Nav item--> --}}
+                <!--end::Nav item-->
 
                 <!--begin::Nav item master-->
                 <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="right" data-bs-dismiss="click" title="{{ ucwords("master") }}">
-                    <a class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light active" data-bs-toggle="tab" href="#master">
+                    <a class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light" data-bs-toggle="tab" href="#master">
                         <i class="fa fa-database"></i>
                     </a>
                 </li>
@@ -56,7 +47,7 @@
                 <!--end::Nav item transaksi-->
 
                 <!--begin::Nav item laporan-->
-                <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="right" data-bs-dismiss="click" title="{{ ucfirst("laporan") }}">
+                {{-- <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="right" data-bs-dismiss="click" title="{{ ucfirst("laporan") }}">
                     <!--begin::Nav link-->
                     <a class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light" data-bs-toggle="tab" href="#laporan">
                         <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
@@ -64,7 +55,7 @@
                         <!--end::Svg Icon-->
                     </a>
                     <!--end::Nav link-->
-                </li>
+                </li> --}}
                 <!--end::Nav item laporan-->
 
                 <!--begin::Nav item supervisor-->
@@ -82,7 +73,7 @@
                 <!--end::Nav item supervisor-->
 
                 <!--begin::Nav item setting-->
-                <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="right" data-bs-dismiss="click" title="{{ ucfirst("setting") }}">
+                {{-- <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="right" data-bs-dismiss="click" title="{{ ucfirst("setting") }}">
                     <!--begin::Nav link-->
                     <a class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light" data-bs-toggle="tab" href="#setting">
                         <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
@@ -92,7 +83,7 @@
                         <!--end::Svg Icon-->
                     </a>
                     <!--end::Nav link-->
-                </li>
+                </li> --}}
                 <!--end::Nav item setting-->
 
             </ul>
@@ -236,9 +227,8 @@
                         <!--end::Avatar-->
                         <!--begin::Username-->
                         <div class="d-flex flex-column">
-                            <div class="fw-bolder d-flex align-items-center fs-5">Max Smith
-                            <span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span></div>
-                            <a href="#" class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
+                            <div class="fw-bolder d-flex align-items-center fs-5">{{ Auth()->user()->fullname }}</div>
+                            <a href="#" class="fw-bold text-muted text-hover-primary fs-7">{{ Auth()->user()->level->keterangan }}</a>
                         </div>
                         <!--end::Username-->
                     </div>
@@ -247,14 +237,14 @@
                 <!--begin::Menu separator-->
                 <div class="separator my-2"></div>
                 <!--end::Menu separator-->
-                <!--begin::Menu item-->
+                {{-- <!--begin::Menu item-->
                 <div class="menu-item px-5">
                     <a href="../../demo7/dist/account/overview.html" class="menu-link px-5">My Profile</a>
                 </div>
-                <!--end::Menu item-->
+                <!--end::Menu item--> --}}
                 <!--begin::Menu item-->
                 <div class="menu-item px-5">
-                    <a href="../../demo7/dist/authentication/flows/basic/sign-in.html" class="menu-link px-5">Sign Out</a>
+                    <a href="{{ route("logout") }}" class="menu-link px-5">Sign Out</a>
                 </div>
                 <!--end::Menu item-->
                 <!--begin::Menu separator-->
